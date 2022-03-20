@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header-menu-link{
+  @apply uppercase font-bold text-[16px] hover:border-b-2 hover:border-gray-700 hover:text-gray-700 transition-all duration-150 ease-out pb-4 text-gray-500
+}
+.header-menu-item-active .header-menu-link{
+  @apply border-b-2 border-gray-900 transition-all duration-300 ease-linear pb-4 text-gray-900
+}
+
+.header-mobile-menu-item{
+  @apply mb-2 h-[45px] rounded-lg relative block
+}
+
+.header-mobile-menu-link{
+  @apply absolute top-0 right-0 bottom-0 left-0 flex items-center pl-3 font-bold text-[16px] text-gray-500 uppercase
+}
+
+.header-mobile-menu-item-active {
+  @apply bg-gray-200 
+}
+
+.header-mobile-menu-item-active .header-mobile-menu-link{
+  @apply text-gray-900
+}
+
+.product-mobile-menu-item{
+  @apply mb-2 rounded-lg mt-2
+} 
+
+.product-mobile-menu-link{
+ @apply flex items-center pl-3 py-2 font-medium text-[15px] text-gray-500 uppercase
+}
+
+.sidebar-item{
+  @apply uppercase text-base font-semibold tracking-wide px-3 py-2 border-b border-x border-gray-200 text-gray-900 flex items-center justify-between
+}
+
+.sidebar-item.sidebar-active{
+  @apply bg-gray-200 text-gray-900
+}
+
+.sidebar-item.sidebar-active a{
+  @apply text-black
+}
+
+.slick-initialized .slick-slide{
+  display: flex !important;
+  justify-content: center;
+}
+.slick-track{
+display: flex !important;
+gap: 12px;
+}

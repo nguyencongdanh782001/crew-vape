@@ -259,7 +259,7 @@ export default ChiTietSanPham;
 
 export async function getServerSideProps(context: any) {
   const resProduct = await fetch(
-    `https://vape-store.herokuapp.com/api/product/${context.params.id}`
+    `https://vape-store.herokuapp.com/api/product/find/${context.params.id}`
   );
   const product = await resProduct.json();
 

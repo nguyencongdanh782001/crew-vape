@@ -38,7 +38,10 @@ const Warning = () => {
           >
             Trên 18+
           </span>
-          <span className="border border-white py-2 px-4 text-lg text-white font-semibold text-center cursor-pointer hover:bg-white hover:text-black transition-all duration-100 ease-linear rounded-md">
+          <span
+            onClick={() => handleSubmit("dưới 18")}
+            className="border border-white py-2 px-4 text-lg text-white font-semibold text-center cursor-pointer hover:bg-white hover:text-black transition-all duration-100 ease-linear rounded-md"
+          >
             Dưới 18
           </span>
         </div>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://thecrewvape.vercel.app/</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/freebase?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/khuyen-mai</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/freebase</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/saltnic</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/disposable-pod</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/pod-mod</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/box-tank</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/phu-kien</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/khuyen-mai?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/saltnic?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/box-tank?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/disposable-pod?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://thecrewvape.vercel.app/san-pham/phu-kien?page=1</loc>
+  <lastmod>2022-03-21T12:43:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

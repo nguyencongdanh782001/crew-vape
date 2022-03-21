@@ -4,7 +4,6 @@ import Category from "../components/category/Category";
 import Layout from "../components/layout/LayoutHome";
 import ListProduct from "../components/listproduct/ListProduct";
 import SliderBanner from "../components/slider/SliderBanner";
-import Warning from "../components/warning/Warning";
 
 const Home: NextPage = ({
   freebase,

@@ -97,7 +97,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           <img
                             src={item.image}
                             alt=""
-                            className=" md:w-[27rem] sm:h-[25rem] h-[20rem] object-fill"
+                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
                           />
                         </Zoom>
                       </div>
@@ -120,7 +120,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         <img
                           src={item.image}
                           alt=""
-                          className="w-[120px] h-[7rem] object-fill cursor-pointer"
+                          className="w-[120px] h-[7rem] object-contain cursor-pointer"
                         />
                       </div>
                     ))}
@@ -135,7 +135,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                       <img
                         src={item.image}
                         alt=""
-                        className=" md:w-[27rem] sm:h-[25rem] h-[20rem] object-fill"
+                        className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
                       />
                     </Zoom>
                   </div>

@@ -105,7 +105,7 @@ const NavBarMobile = () => {
                         <img
                           src={item.image[0].image}
                           alt=""
-                          className="h-12 w-12 object-cover"
+                          className="h-10 w-10 sm:h-12 sm:w-12 object-cover"
                         />
                       </div>
                     </div>

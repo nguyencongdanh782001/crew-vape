@@ -1,7 +1,7 @@
-import React, { memo, useEffect, useRef, useState } from "react";
-import NavBarPc from "./components/NavBarPc";
+import React, { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import NavBarMobile from "./components/NavBarMobile";
+import NavBarPc from "./components/NavBarPc";
 
 interface PropsType {
   scrollNavBar: string;
@@ -11,9 +11,13 @@ const NavBar = ({ scrollNavBar }: PropsType) => {
   const [hideHeader, setHideHeader] = useState(
     "block bg-white shadow-md shadow-gray-400"
   );
-
+  const [isMobile, setIsMobile] = useState(false);
   const prevScroll = useRef<number>(0);
-  const isMobile = useMediaQuery({ maxWidth: "1279px" });
+
+  const moblie = useMediaQuery({ maxWidth: "1279px" });
+  useEffect(() => {
+    setIsMobile(moblie);
+  }, [moblie]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,4 +52,4 @@ const NavBar = ({ scrollNavBar }: PropsType) => {
   );
 };
 
-export default memo(NavBar);
+export default NavBar;

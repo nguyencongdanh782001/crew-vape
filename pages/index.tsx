@@ -54,7 +54,7 @@ const Home: NextPage = ({
 
 export default Home;
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
   const resFreebase = await fetch(
     "https://vape-store.herokuapp.com/api/product?page=1&&limit=4&&cat=freebase"
   );

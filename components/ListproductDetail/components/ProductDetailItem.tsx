@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 import { FaCartPlus } from "react-icons/fa";
 
 interface PropsType {
@@ -60,4 +60,4 @@ const ProductDetailItem = ({ data }: PropsType) => {
   );
 };
 
-export default ProductDetailItem;
+export default memo(ProductDetailItem);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -67,4 +67,4 @@ const SliderBanner = ({ banner }: any) => {
   );
 };
 
-export default SliderBanner;
+export default memo(SliderBanner);

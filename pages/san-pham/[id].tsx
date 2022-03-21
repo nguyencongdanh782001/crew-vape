@@ -1,4 +1,4 @@
-import { Breadcrumbs, Typography } from "@mui/material";
+// import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import React, { useState } from "react";
 import {
@@ -63,7 +63,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   return (
     <LayoutProduct>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
-        <Breadcrumbs aria-label="breadcrumb">
+        {/* <Breadcrumbs aria-label="breadcrumb">
           <Link href="/" passHref>
             <a className="hover:underline text-base font-medium">Trang chủ</a>
           </Link>
@@ -75,7 +75,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
           <Typography color="text.primary" className="font-semibold">
             {product.name}
           </Typography>
-        </Breadcrumbs>
+        </Breadcrumbs> */}
       </div>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] bg-white py-5 rounded h-full">
         <div className="flex flex-col sm:flex-row max-w-full justify-center md:mx-5">

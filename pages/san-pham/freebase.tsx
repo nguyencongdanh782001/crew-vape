@@ -1,4 +1,4 @@
-import { Breadcrumbs, Pagination, Typography } from "@mui/material";
+// import { Breadcrumbs, Pagination, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -72,14 +72,14 @@ const FreeBase = ({ freebase }: any) => {
   return (
     <LayoutProduct>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
-        <Breadcrumbs aria-label="breadcrumb">
+        {/* <Breadcrumbs aria-label="breadcrumb">
           <Link href="/" passHref>
             <a className="hover:underline text-base font-medium">Trang chủ</a>
           </Link>
           <Typography color="text.primary" className="font-medium">
             Tinh dầu freebase
           </Typography>
-        </Breadcrumbs>
+        </Breadcrumbs> */}
       </div>
       {/* <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px]">
         <SearchMenu />
@@ -111,12 +111,12 @@ const FreeBase = ({ freebase }: any) => {
         )}
         {freebase.product.length > 0 && (
           <div className="w-full flex justify-center items-center mt-6">
-            <Pagination
+            {/* <Pagination
               count={freebase.totalPage ? freebase.totalPage : 1}
               page={page ? page : 1}
               onChange={handleChangePage}
               size="medium"
-            />
+            /> */}
           </div>
         )}
       </div>

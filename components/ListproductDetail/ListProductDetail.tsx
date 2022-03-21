@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ProductDetailItem from "./components/ProductDetailItem";
 
 interface PropsType {
@@ -43,4 +43,4 @@ const ListProductDetail = ({ data }: PropsType) => {
   );
 };
 
-export default ListProductDetail;
+export default memo(ListProductDetail);

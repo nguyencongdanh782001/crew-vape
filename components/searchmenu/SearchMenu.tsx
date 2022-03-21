@@ -1,4 +1,4 @@
-import { Chip } from "@mui/material";
+// import { Chip } from "@mui/material";
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -53,72 +53,72 @@ const SearchMenu = () => {
     console.log(listSearch);
   };
 
+  // {(listSearch.brand !== null ||
+  //   listSearch.category !== null ||
+  //   listSearch.price !== null ||
+  //   listSearch.size !== null) && (
+  //   <div className="flex justify-between items-center py-2 px-3 mb-4 bg-white rounded">
+  //     <div className="flex justify-start items-center gap-2">
+  //       <h1 className="font-medium sm:text-base text-xs text-red-500 tracking-wide mr-2">
+  //         Bạn chọn:
+  //       </h1>
+  //       <div className="flex justify-start items-center flex-wrap gap-2 sm:gap-x-3">
+  //         {/* {listSearch.price !== null && (
+  //           <Chip
+  //             label={listSearch.price.text}
+  //             onDelete={() => handleDelete({ value: "price" })}
+  //             size="small"
+  //             className="bg-amber-400"
+  //           />
+  //         )}
+  //         {listSearch.category !== null && (
+  //           <Chip
+  //             label={listSearch.category.text}
+  //             onDelete={() => handleDelete({ value: "category" })}
+  //             size="small"
+  //             className="bg-purple-400"
+  //           />
+  //         )}
+  //         {listSearch.brand !== null && (
+  //           <Chip
+  //             label={listSearch.brand.text}
+  //             onDelete={() => handleDelete({ value: "brand" })}
+  //             size="small"
+  //             className="bg-lime-400"
+  //           />
+  //         )}
+  //         {listSearch.size !== null && (
+  //           <Chip
+  //             label={listSearch.size.text}
+  //             onDelete={() => handleDelete({ value: "size" })}
+  //             size="small"
+  //             className="bg-cyan-400"
+  //           />
+  //         )} */}
+  //       </div>
+  //     </div>
+  //     <div className="flex justify-end items-center gap-x-2">
+  //       <div
+  //         onClick={handleSearch}
+  //         className="bg-blue-400 rounded-full p-2 flex justify-center items-center shadow-md shadow-gray-400 cursor-pointer hover:scale-105 transition-transform duration-150"
+  //       >
+  //         <i>
+  //           <BsSearch className="text-white text-xs sm:text-base" />
+  //         </i>
+  //       </div>
+  //       <div
+  //         onClick={() => handleDelete({ value: "delete-all" })}
+  //         className="bg-red-400 rounded-full p-2 flex justify-center items-center shadow-md shadow-gray-400 cursor-pointer hover:scale-105 transition-transform duration-150"
+  //       >
+  //         <i>
+  //           <CgTrash className="text-white text-xs sm:text-base" />
+  //         </i>
+  //       </div>
+  //     </div>
+  //   </div>
+  // )}
   return (
     <div className="w-full flex flex-col">
-      {(listSearch.brand !== null ||
-        listSearch.category !== null ||
-        listSearch.price !== null ||
-        listSearch.size !== null) && (
-        <div className="flex justify-between items-center py-2 px-3 mb-4 bg-white rounded">
-          <div className="flex justify-start items-center gap-2">
-            <h1 className="font-medium sm:text-base text-xs text-red-500 tracking-wide mr-2">
-              Bạn chọn:
-            </h1>
-            <div className="flex justify-start items-center flex-wrap gap-2 sm:gap-x-3">
-              {listSearch.price !== null && (
-                <Chip
-                  label={listSearch.price.text}
-                  onDelete={() => handleDelete({ value: "price" })}
-                  size="small"
-                  className="bg-amber-400"
-                />
-              )}
-              {listSearch.category !== null && (
-                <Chip
-                  label={listSearch.category.text}
-                  onDelete={() => handleDelete({ value: "category" })}
-                  size="small"
-                  className="bg-purple-400"
-                />
-              )}
-              {listSearch.brand !== null && (
-                <Chip
-                  label={listSearch.brand.text}
-                  onDelete={() => handleDelete({ value: "brand" })}
-                  size="small"
-                  className="bg-lime-400"
-                />
-              )}
-              {listSearch.size !== null && (
-                <Chip
-                  label={listSearch.size.text}
-                  onDelete={() => handleDelete({ value: "size" })}
-                  size="small"
-                  className="bg-cyan-400"
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex justify-end items-center gap-x-2">
-            <div
-              onClick={handleSearch}
-              className="bg-blue-400 rounded-full p-2 flex justify-center items-center shadow-md shadow-gray-400 cursor-pointer hover:scale-105 transition-transform duration-150"
-            >
-              <i>
-                <BsSearch className="text-white text-xs sm:text-base" />
-              </i>
-            </div>
-            <div
-              onClick={() => handleDelete({ value: "delete-all" })}
-              className="bg-red-400 rounded-full p-2 flex justify-center items-center shadow-md shadow-gray-400 cursor-pointer hover:scale-105 transition-transform duration-150"
-            >
-              <i>
-                <CgTrash className="text-white text-xs sm:text-base" />
-              </i>
-            </div>
-          </div>
-        </div>
-      )}
       <ul className="flex justify-start items-center gap-x-3 sm:gap-x-5 pl-3 mb-4 bg-white rounded flex-wrap">
         <li className="font-medium sm:text-base text-xs text-red-500 py-2 tracking-wide">
           Tìm kiếm:

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import ProductItem from "./components/ProductItem";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -62,12 +62,11 @@ const ListProduct = ({ heading, data, link }: PropsType) => {
   return (
     <section className="w-full flex items-center justify-center mt-16 ">
       <div className="max-w-7xl flex flex-col items-center justify-center">
-        <div className="mb-7 flex items-center justify-center gap-x-3 w-full">
-          <div className="border-[0.5px] w-16 md:w-48 lg:w-32 h-[3px] bg-gray-800"></div>
-          <h2 className="uppercase text-center font-semibold text-xl sm:text-2xl lg:text-3xl tracking-wider leading-10 text-gray-800">
+        <div className="mb-7 relative flex items-center justify-center gap-x-3 w-[300px] sm:w-[500px] lg:w-[650px]">
+          <h2 className="uppercase text-center font-semibold text-xl sm:text-2xl px-3 bg-white lg:text-3xl tracking-wider leading-10 text-gray-800 z-10">
             {heading}
           </h2>
-          <div className="border-[0.5px] w-16 md:w-48 lg:w-32 h-[3px] bg-gray-800"></div>
+          <div className="border-[0.5px] left-0 right-0 absolute h-[3px] bg-gray-800"></div>
         </div>
         <div
           className="max-w-7xl flex justify-center flex-wrap gap-7 items-center "
@@ -93,4 +92,4 @@ const ListProduct = ({ heading, data, link }: PropsType) => {
   );
 };
 
-export default ListProduct;
+export default memo(ListProduct);

@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import { useEffect } from "react";
 import Category from "../components/category/Category";
 import Layout from "../components/layout/LayoutHome";
@@ -20,6 +21,14 @@ const Home: NextPage = ({
 
   return (
     <Layout scrollNavBar="scroll">
+      <Head>
+        <title>The crew station</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="the crew station là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
+        />
+      </Head>
       <div className="pb-10 pt-[58px] lg:pt-[8px] ">
         <SliderBanner banner={banner} />
         <Category />

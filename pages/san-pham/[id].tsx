@@ -12,6 +12,7 @@ import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import Head from "next/head";
 
 export const SampleNextArrow = (props: any) => {
   const { onClick } = props;
@@ -62,6 +63,14 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   };
   return (
     <LayoutProduct>
+      <Head>
+        <title>Chi tiết sản phẩm</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="the crew station là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
+        />
+      </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">
           <Link href="/" passHref>

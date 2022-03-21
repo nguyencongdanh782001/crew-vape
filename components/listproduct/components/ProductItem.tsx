@@ -31,7 +31,7 @@ interface PropsType {
 const ProductItem = ({ data }: PropsType) => {
   return (
     <Link href={`/san-pham/${data._id}`} passHref>
-      <div className="flex flex-col justify-center items-center cursor-pointer group">
+      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px]">
         <div className="overflow-hidden relative">
           <img
             src={data?.image[0].image}

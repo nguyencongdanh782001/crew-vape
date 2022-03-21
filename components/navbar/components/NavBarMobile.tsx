@@ -54,7 +54,7 @@ const NavBarMobile = () => {
   };
   return (
     <div className="flex justify-between items-center py-2 px-3 sm:px-4">
-      <div className="flex justify-center items-center gap-x-3">
+      <div className="flex justify-center items-center">
         <div className="flex justify-center items-center">
           <Link href="/" passHref>
             <Image
@@ -133,8 +133,9 @@ const NavBarMobile = () => {
                 </li>
               )}
               {listSearch?.product.length < 1 && (
-                <li className="px-2 py-3 flex items-center gap-1 justify-center">
-                  <IoSearchOutline className="text-lg" />
+                <li className="px-2 py-3 flex items-center justify-center">
+                  {/* gap-1 */}
+                  <IoSearchOutline className="text-lg mr-1" />
                   <p className="text-center text-sm tracking-wider">
                     {`Không tìm thấy kết quả cho "${searchValue}"`}
                   </p>

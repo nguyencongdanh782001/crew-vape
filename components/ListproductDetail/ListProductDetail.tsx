@@ -34,7 +34,8 @@ interface PropsType {
 const ListProductDetail = ({ data }: PropsType) => {
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="w-full flex flex-wrap gap-3 items-center max-w-[350px] sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-md">
+      <div className="w-full flex flex-wrap items-center max-w-[350px] sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-md">
+        {/* gap-3 */}
         {data?.map((item, index) => (
           <ProductDetailItem key={index} data={item} />
         ))}

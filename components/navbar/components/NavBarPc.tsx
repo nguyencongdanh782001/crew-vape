@@ -34,10 +34,11 @@ const NavBarPc = () => {
   return (
     <div
       className={`flex ${
-        router.pathname === "/" ? "justify-between" : "justify-center gap-x-20"
+        router.pathname === "/" ? "justify-between" : "justify-center "
       } items-center py-4 px-8`}
     >
-      <div>
+      {/* gap-x-20 */}
+      <div className="mr-[40px]">
         <Link href="/" passHref>
           <div className="w-full cursor-pointer">
             <Image
@@ -50,33 +51,39 @@ const NavBarPc = () => {
         </Link>
       </div>
       {router.pathname === "/" && (
-        <ul className="flex justify-center items-center gap-x-8 ">
+        <ul className="flex justify-center items-center mx-[40px]">
+          {/* gap-x-8 */}
           <li
-            className={router.pathname === "/" ? "header-menu-item-active" : ""}
+            className={`${
+              router.pathname === "/" ? "header-menu-item-active" : ""
+            } mr-4`}
           >
             <Link href="/" passHref>
               <a className="header-menu-link">trang chủ</a>
             </Link>
           </li>
           <li
-            className={
+            className={` ${
               router.pathname.split("/")[1] === "san-pham"
                 ? "header-menu-item-active"
                 : ""
-            }
+            } mx-4`}
           >
             <Link href="/san-pham/freebase?page=1">
               <a className="header-menu-link">sản phẩm</a>
             </Link>
           </li>
-          <li>
+          <li className="ml-4">
             <Link href="/khuyen-mai">
               <a className="header-menu-link">sản phẩm khuyến mãi</a>
             </Link>
           </li>
         </ul>
       )}
-      <form onSubmit={(e) => handleSubmit(e)} className="relative group">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="relative group mx-[40px]"
+      >
         <input
           type="text"
           className="h-7 w-[280px] rounded-full outline-none pl-[38px] py-5 pr-4 font-medium text-sm text-gray-500 border border-solid border-gray-400"
@@ -91,7 +98,7 @@ const NavBarPc = () => {
         <ul
           className={`${
             searchValue !== "" ? "block" : "hidden"
-          }  border border-gray-300 left-0 right-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
+          } mx-[40px] border border-gray-300 left-0 right-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
         >
           {isLoading ? (
             <li>
@@ -143,8 +150,9 @@ const NavBarPc = () => {
                 </li>
               )}
               {listSearch?.product.length < 1 && (
-                <li className="px-2 py-3 flex items-center gap-1 justify-center">
-                  <IoSearchOutline className="text-lg" />
+                <li className="px-2 py-3 flex items-center justify-center">
+                  {/* gap-1  */}
+                  <IoSearchOutline className="text-lg mr-1" />
                   <p className="text-center text-sm tracking-wider">
                     {`Không tìm thấy kết quả cho "${searchValue}"`}
                   </p>
@@ -155,7 +163,7 @@ const NavBarPc = () => {
         </ul>
       </form>
       {router.pathname !== "/" && (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center ml-[40px]">
           <h4 className="text-sm font-normal tracking-wide">
             Tư vấn trực tuyến:
           </h4>

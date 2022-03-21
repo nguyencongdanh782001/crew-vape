@@ -29,12 +29,13 @@ const Category = () => {
   }, []);
   return (
     <section className="w-full flex justify-center mt-10">
-      <div className="flex justify-center items-center gap-6 flex-wrap max-w-7xl">
+      <div className="flex justify-center items-center  flex-wrap max-w-7xl">
+        {/* gap-6 */}
         {category?.map((item, index) => (
           <Link href={`/san-pham/${item.slug}`} key={index} passHref>
             <div
               data-aos="fade-up"
-              className="relative flex items-center jus cursor-pointer overflow-hidden group rounded-lg"
+              className="relative flex items-center jus cursor-pointer overflow-hidden group rounded-lg m-3"
             >
               <div className="w-[320px] sm:w-[300px] md:w-[350px] lg:w-[580px] h-[150px] sm:h-[200px] md:h-[200px] lg:h-[300px]">
                 <img

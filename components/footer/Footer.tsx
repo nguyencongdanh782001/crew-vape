@@ -5,8 +5,9 @@ import { IoStorefront } from "react-icons/io5";
 const Footer = () => {
   return (
     <footer className="mt-auto w-full flex flex-col justify-center">
-      <div className="flex flex-col justify-between gap-y-5 py-7 px-7 lg:flex-row lg:gap-x-20  lg:py-5 lg:px-20 text-white bg-slate-800">
-        <div className="flex-1">
+      <div className="flex flex-col justify-between  py-7 px-7 lg:flex-row   lg:py-5 lg:px-20 text-white bg-slate-800">
+        {/* lg:gap-x-20 gap-y-5 */}
+        <div className="flex-1 lg:mr-10 my-3">
           <h3 className="uppercase tracking-wider text-xl font-semibold leading-8">
             the crew station
           </h3>
@@ -31,7 +32,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="flex-3 lg:w-[20%]">
+        <div className="flex-3 lg:w-[20%] lg:mx-10 my-3">
           <h3 className="uppercase tracking-wider text-xl font-semibold leading-8">
             thông tin
           </h3>
@@ -51,7 +52,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 lg:w-[20%] lg:ml-10 my-3">
           <h3 className="uppercase tracking-wider text-xl font-semibold leading-8">
             fanpage facebook
           </h3>

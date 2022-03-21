@@ -31,10 +31,11 @@ const Warning = () => {
           Bạn phải trên 18 tuổi và đủ độ tuổi hút thuốc lá hợp pháp tại Việt Nam
           mới có thể sử dụng vape và mua sản phẩm của chúng tôi.
         </p>
-        <div className=" flex gap-5 mt-3">
+        <div className=" flex mt-3">
+          {/* gap-5 */}
           <span
             onClick={() => handleSubmit("trên 18")}
-            className="bg-red-500 py-2 px-3 text-lg text-white font-semibold text-center cursor-pointer hover:bg-red-600 transition-all duration-100 ease-linear rounded-md"
+            className="bg-red-500 py-2 mr-5 px-3 text-lg text-white font-semibold text-center cursor-pointer hover:bg-red-600 transition-all duration-100 ease-linear rounded-md"
           >
             Trên 18+
           </span>

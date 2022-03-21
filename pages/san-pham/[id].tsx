@@ -63,19 +63,22 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   return (
     <LayoutProduct>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
-        {/* <Breadcrumbs aria-label="breadcrumb">
+        <div className="flex">
           <Link href="/" passHref>
-            <a className="hover:underline text-base font-medium">Trang chủ</a>
+            <a className="hover:underline text-base font-normal ">Trang chủ</a>
           </Link>
-          <Link href={`/san-pham/${product.category.slug}`} passHref>
-            <a className="hover:underline text-base font-medium">
+          <p>&nbsp;/&nbsp;</p>
+          <Link href="/" passHref>
+            <a className="hover:underline text-base font-normal ">
+              {" "}
               {product.category.name}
             </a>
           </Link>
-          <Typography color="text.primary" className="font-semibold">
+          <p>&nbsp;/&nbsp;</p>
+          <p color="text.primary" className="font-medium">
             {product.name}
-          </Typography>
-        </Breadcrumbs> */}
+          </p>
+        </div>
       </div>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] bg-white py-5 rounded h-full">
         <div className="flex flex-col sm:flex-row max-w-full justify-center md:mx-5">
@@ -113,7 +116,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                     focusOnSelect={true}
                   >
                     {product.image.map((item: any, index: any) => (
-                      <div key={index}>
+                      <div key={index} className="mx-[6px]">
                         <img
                           src={item.image}
                           alt=""
@@ -128,11 +131,13 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               <div className="h-[27rem]">
                 {product.image.map((item: any, index: any) => (
                   <div key={index}>
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="md:w-[27rem] h-[25rem] object-fill"
-                    />
+                    <Zoom>
+                      <img
+                        src={item.image}
+                        alt=""
+                        className=" md:w-[27rem] sm:h-[25rem] h-[20rem] object-fill"
+                      />
+                    </Zoom>
                   </div>
                 ))}
               </div>
@@ -191,13 +196,13 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   Battery: {product.battery}
                 </p>
               )}
-
-              <div className="flex flex-wrap gap-2 mt-6">
+              <div className="flex flex-wrap  mt-6">
+                {/* gap-2 */}
                 {product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod" ? (
                   <>
-                    <p className="text-base font-medium tracking-wide leading-8">
+                    <p className="text-base font-medium tracking-wide leading-8 mr-1 mb-2">
                       Vị:
                     </p>
                     {product.image.map((item: any, index: any) => (
@@ -205,7 +210,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         key={index}
                         className={`${
                           item.instock === false && `bg-gray-200`
-                        } font-semibold border border-black bg-gray-800 text-white rounded-sm py-[2px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                        } mx-1 mb-2 font-semibold border border-black bg-gray-800 text-white rounded-sm py-[2px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
                       >
                         {item.name}
                       </span>

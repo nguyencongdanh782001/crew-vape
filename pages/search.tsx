@@ -88,8 +88,9 @@ const Search = ({ search }: any) => {
           <h1 className="font-medium text-xs sm:text-lg border-l-4 border-red-400 pl-2">
             {`Kết quả cho "${router.asPath.split("search=")[1]}"`}
           </h1>
-          <div className="flex justify-between items-center gap-x-3">
-            <label className="font-semibold text-xs sm:text-base">
+          <div className="flex justify-between items-center ">
+            {/* gap-x-3 */}
+            <label className="font-semibold text-xs sm:text-base mr-3">
               Sắp Xếp:
             </label>
             <Select
@@ -102,8 +103,9 @@ const Search = ({ search }: any) => {
         </div>
         <ListProductDetail data={listProductFilter} />
         {search.product.length < 1 && (
-          <div className="w-full flex justify-center items-center mb-6 gap-x-2">
-            <IoSearchOutline className="text-lg" />
+          <div className="w-full flex justify-center items-center mb-6 ">
+            {/* gap-x-2 */}
+            <IoSearchOutline className="text-lg mr-2" />
             <p>Không tìm thấy sản phẩm</p>
           </div>
         )}

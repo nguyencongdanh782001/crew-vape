@@ -72,14 +72,15 @@ const BoxTank = ({ boxTank }: any) => {
   return (
     <LayoutProduct>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
-        {/* <Breadcrumbs aria-label="breadcrumb">
+        <div className="flex">
           <Link href="/" passHref>
-            <a className="hover:underline text-base font-medium">Trang chủ</a>
+            <a className="hover:underline text-base font-normal ">Trang chủ</a>
           </Link>
-          <Typography color="text.primary" className="font-medium">
+          <p>&nbsp;/&nbsp;</p>
+          <p color="text.primary" className="font-medium">
             Box tank
-          </Typography>
-        </Breadcrumbs> */}
+          </p>
+        </div>
       </div>
       {/* <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px]">
         <SearchMenu />
@@ -89,8 +90,9 @@ const BoxTank = ({ boxTank }: any) => {
           <h1 className="font-medium text-xs sm:text-lg border-l-4 border-red-400 pl-2">
             Box tank
           </h1>
-          <div className="flex justify-between items-center gap-x-3">
-            <label className="font-semibold text-xs sm:text-base">
+          <div className="flex justify-between items-center ">
+            {/* gap-x-3 */}
+            <label className="font-semibold text-xs sm:text-base mr-3">
               Sắp Xếp:
             </label>
             <Select
@@ -103,8 +105,9 @@ const BoxTank = ({ boxTank }: any) => {
         </div>
         <ListProductDetail data={listProductFilter} />
         {boxTank.product.length < 1 && (
-          <div className="w-full flex justify-center items-center mb-6 gap-x-2">
-            <IoSearchOutline className="text-lg" />
+          <div className="w-full flex justify-center items-center mb-6 ">
+            {/* gap-x-2 */}
+            <IoSearchOutline className="text-lg mr-2" />
             <p>Không có sản phẩm</p>
           </div>
         )}

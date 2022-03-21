@@ -63,5 +63,5 @@ body {
 }
 .slick-track{
 display: flex !important;
-gap: 12px;
+/* gap: 12px; */
 }

@@ -14,15 +14,19 @@ const NavBarPc = () => {
   const [listSearch, setListSearch] = useState<any>();
 
   useDebounce(searchValue, 300, async () => {
-    const res = await fetch(
-      `https://vape-store.herokuapp.com/api/product/search/all?page=1&&limit=6&&searchQuery=${searchValue}`
-    );
-    const data = await res.json();
-    if (!res) {
-      setIsLoading(true);
-    } else {
-      setListSearch(data);
-      setIsLoading(false);
+    try {
+      const res = await fetch(
+        `https://vape-store.herokuapp.com/api/product/search/all?page=1&&limit=6&&searchQuery=${searchValue}`
+      );
+      const data = await res.json();
+      if (!res) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+        setListSearch(data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   });
   const handleSubmit = (e: any) => {
@@ -98,7 +102,7 @@ const NavBarPc = () => {
         <ul
           className={`${
             searchValue !== "" ? "block" : "hidden"
-          } mx-[40px] border border-gray-300 left-0 right-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
+          } mt-1 border border-gray-300 right-0 left-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
         >
           {isLoading ? (
             <li>
@@ -129,7 +133,16 @@ const NavBarPc = () => {
                   </li>
                 </Link>
               ))}
-              {listSearch?.totalPage * listSearch?.product.length > 6 ? (
+
+              {listSearch?.product.length < 1 ? (
+                <li className="px-2 py-3 flex items-center justify-center">
+                  {/* gap-1  */}
+                  <IoSearchOutline className="text-lg mr-1" />
+                  <p className="text-center text-sm tracking-wider">
+                    {`Không tìm thấy kết quả cho "${searchValue}"`}
+                  </p>
+                </li>
+              ) : listSearch?.totalPage * listSearch?.product.length > 6 ? (
                 <li className="px-2 py-3">
                   <Link href={`/search?page=1&&search=${searchValue}`} passHref>
                     <p className="text-center text-sm tracking-wider hover:text-red-400 cursor-pointer">
@@ -147,15 +160,6 @@ const NavBarPc = () => {
                       Xem thêm
                     </p>
                   </Link>
-                </li>
-              )}
-              {listSearch?.product.length < 1 && (
-                <li className="px-2 py-3 flex items-center justify-center">
-                  {/* gap-1  */}
-                  <IoSearchOutline className="text-lg mr-1" />
-                  <p className="text-center text-sm tracking-wider">
-                    {`Không tìm thấy kết quả cho "${searchValue}"`}
-                  </p>
                 </li>
               )}
             </>

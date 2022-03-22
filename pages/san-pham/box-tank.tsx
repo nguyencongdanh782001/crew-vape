@@ -2,12 +2,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
-import SearchMenu from "../../components/searchmenu/SearchMenu";
+import Pagination from "../../components/pagination/Pagination";
 
 const BoxTank = ({ boxTank }: any) => {
   const [page, setPage] = useState<number>(boxTank.currentPage);
@@ -15,15 +15,16 @@ const BoxTank = ({ boxTank }: any) => {
   const [filter, setFilter] = useState("");
 
   const router = useRouter();
-  const handleChangePage = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-    router.push(`/san-pham/box-tank?page=${value}`, undefined, {
-      shallow: false,
-    });
-  };
+
+  const handleChangePage = useCallback(
+    (value: any) => {
+      setPage(value.selected + 1);
+      router.push(`/san-pham/box-tank?page=${value.selected + 1}`, undefined, {
+        shallow: false,
+      });
+    },
+    [router]
+  );
 
   useEffect(() => {
     if (filter === "az") {
@@ -122,12 +123,11 @@ const BoxTank = ({ boxTank }: any) => {
         )}
         {boxTank.product.length > 0 && (
           <div className="w-full flex justify-center items-center mt-6">
-            {/* <Pagination
-              count={boxTank.totalPage ? boxTank.totalPage : 1}
-              page={page ? page : 1}
-              onChange={handleChangePage}
-              size="medium"
-            /> */}
+            <Pagination
+              totalPage={boxTank.totalPage}
+              activePage={page}
+              handleChange={handleChangePage}
+            />
           </div>
         )}
       </div>

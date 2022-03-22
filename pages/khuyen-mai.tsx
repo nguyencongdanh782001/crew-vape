@@ -2,28 +2,29 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Select from "react-select";
 import LayoutProduct from "../components/layout/LayoutProduct";
 import ListProductDetail from "../components/ListproductDetail/ListProductDetail";
-import SearchMenu from "../components/searchmenu/SearchMenu";
+import Pagination from "../components/pagination/Pagination";
 
-const KhuyenMai = ({ boxTank }: any) => {
-  const [page, setPage] = useState<number>(boxTank.currentPage);
-  const [listProductFilter, setListProductFilter] = useState(boxTank.product);
+const KhuyenMai = ({ khuyenMai }: any) => {
+  const [page, setPage] = useState<number>(khuyenMai.currentPage);
+  const [listProductFilter, setListProductFilter] = useState(khuyenMai.product);
   const [filter, setFilter] = useState("");
 
   const router = useRouter();
-  const handleChangePage = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-    router.push(`/san-pham/box-tank?page=${value}`, undefined, {
-      shallow: false,
-    });
-  };
+
+  const handleChangePage = useCallback(
+    (value: any) => {
+      setPage(value.selected + 1);
+      router.push(`/khuyen-mai?page=${value.selected + 1}`, undefined, {
+        shallow: false,
+      });
+    },
+    [router]
+  );
 
   useEffect(() => {
     if (filter === "az") {
@@ -113,21 +114,20 @@ const KhuyenMai = ({ boxTank }: any) => {
           </div>
         </div>
         <ListProductDetail data={listProductFilter} />
-        {boxTank.length < 1 && (
+        {khuyenMai.length < 1 && (
           <div className="w-full flex justify-center items-center mb-6">
             {/* gap-x-2 */}
             <IoSearchOutline className="text-lg mr-2" />
             <p>Không có sản phẩm</p>
           </div>
         )}
-        {boxTank.length > 0 && (
+        {khuyenMai.length > 0 && (
           <div className="w-full flex justify-center items-center mt-6">
-            {/* <Pagination
-              count={boxTank.totalPage ? boxTank.totalPage : 1}
-              page={page ? page : 1}
-              onChange={handleChangePage}
-              size="medium"
-            /> */}
+            <Pagination
+              totalPage={khuyenMai.totalPage}
+              activePage={page}
+              handleChange={handleChangePage}
+            />
           </div>
         )}
       </div>
@@ -141,11 +141,11 @@ export async function getServerSideProps(context: any) {
   const resBoxTank = await fetch(
     `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=box-tank`
   );
-  const boxTank: any = [];
+  const khuyenMai: any = [];
 
   return {
     props: {
-      boxTank,
+      khuyenMai,
     }, // will be passed to the page component as props
   };
 }

@@ -2,11 +2,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Select from "react-select";
 import LayoutProduct from "../components/layout/LayoutProduct";
 import ListProductDetail from "../components/ListproductDetail/ListProductDetail";
+import Pagination from "../components/pagination/Pagination";
 
 const Search = ({ search }: any) => {
   const [page, setPage] = useState<number>(search.currentPage);
@@ -14,15 +15,20 @@ const Search = ({ search }: any) => {
   const [filter, setFilter] = useState("");
 
   const router = useRouter();
-  const handleChangePage = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-    router.push(`/san-pham/box-tank?page=${value}`, undefined, {
-      shallow: false,
-    });
-  };
+
+  const handleChangePage = useCallback(
+    (value: any) => {
+      setPage(value.selected + 1);
+      router.push(
+        `/search?page=${value.selected + 1}&&search=${router.query.search}`,
+        undefined,
+        {
+          shallow: false,
+        }
+      );
+    },
+    [router]
+  );
 
   useEffect(() => {
     if (filter === "az") {
@@ -121,12 +127,11 @@ const Search = ({ search }: any) => {
         )}
         {search.product.length > 0 && (
           <div className="w-full flex justify-center items-center mt-6">
-            {/* <Pagination
-              count={search.totalPage ? search.totalPage : 1}
-              page={page ? page : 1}
-              onChange={handleChangePage}
-              size="medium"
-            /> */}
+            <Pagination
+              totalPage={search.totalPage}
+              activePage={page}
+              handleChange={handleChangePage}
+            />
           </div>
         )}
       </div>

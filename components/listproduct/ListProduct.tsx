@@ -82,7 +82,7 @@ const ListProduct = ({ heading, data, link }: PropsType) => {
               ))}
         </div>
         <div className="mt-8">
-          <Link href={`/san-pham/${link}`} passHref>
+          <Link href={`/san-pham/${link}?page=1`} passHref>
             <a className="border border-gray-800 border-solid rounded-sm py-2 px-4 text-center text-gray-800 font-medium hover:bg-slate-100 hover:text-gray-700 transition-all duration-200 origin-bottom-right">
               Xem thêm
             </a>

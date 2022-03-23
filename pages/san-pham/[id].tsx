@@ -153,65 +153,83 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             )}
           </div>
           <div className="w-screen px-8 pt-5 sm:pt-0 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem]">
-            <div className="">
-              <h1 className="text-2xl font-bold leading-8 tracking-wider text-left capitalize">
+            <div className="mt-2">
+              <h1 className="text-3xl text-gray-900 font-medium mb-2 leading-8 tracking-wider text-left capitalize">
                 {product.name}
               </h1>
-            </div>
-            <div className="mt-2">
-              <h1 className="text-xl font-bold leading-8 tracking-wider text-left text-red-500 mb-2">
+              <p className="text-sm text-gray-500 tracking-wide leading-7 mb-2">
+                {product.desc}
+              </p>
+              <h1 className="text-2xl font-bold leading-8 tracking-widest text-left text-rose-600 mb-2">
                 {product.price}đ
               </h1>
 
-              <p className="text-base font-medium tracking-wide leading-8">
-                Tình trạng: {product.instock ? "còn hàng" : "hết hàng"}
+              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                Tình trạng:&nbsp;&nbsp;
+                <span className="text-rose-700 text-sm font-base">
+                  {product.instock ? "còn hàng" : "hết hàng"}
+                </span>
               </p>
 
-              <p className="text-base font-medium tracking-wide leading-8">
-                Loại sản phẩm: {product.category.name}
+              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                Loại sản phẩm:&nbsp;&nbsp;
+                <span className="text-rose-700 text-sm font-base">
+                  {product.category.name}
+                </span>
               </p>
 
-              <p className="text-base font-medium tracking-wide leading-8">
-                thương hiệu: {product.brand.name}
-              </p>
-
-              <p className="text-base font-medium tracking-wide leading-8">
-                {product.desc}
+              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                thương hiệu:&nbsp;&nbsp;
+                <span className="text-rose-700 text-sm font-base">
+                  {product.brand.name}
+                </span>
               </p>
 
               {product.category.slug === "disposable-pod" && (
-                <p className="text-base font-medium tracking-wide leading-8">
-                  Số hơi(puffs):{product.puffs}
+                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                  Số hơi(puffs):&nbsp;&nbsp;
+                  <span className="text-rose-700 text-sm font-base">
+                    {product.puffs}
+                  </span>
                 </p>
               )}
 
               {(product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod") && (
-                <p className="text-base font-medium tracking-wide leading-8">
-                  Liều lượng nicotine: {product.nicotine}
+                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                  Liều lượng nicotine: &nbsp;&nbsp;
+                  <span className="text-rose-700 text-sm font-base">
+                    {product.nicotine}
+                  </span>
                 </p>
               )}
 
               {(product.category.slug === "freebase" ||
                 product.category.slug === "saltnic") && (
-                <p className="text-base font-medium tracking-wide leading-8">
-                  Dung tích: {product.capacity}
+                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                  Dung tích:&nbsp;&nbsp;
+                  <span className="text-rose-700 text-sm font-base">
+                    {product.capacity}
+                  </span>
                 </p>
               )}
 
               {product.category.slug === "disposable-pod" && (
-                <p className="text-base font-medium tracking-wide leading-8">
-                  Battery: {product.battery}
+                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                  Battery:&nbsp;&nbsp;
+                  <span className="text-rose-700 text-sm font-base">
+                    {product.battery}
+                  </span>
                 </p>
               )}
-              <div className="flex flex-wrap  mt-6">
+              <div className="flex flex-wrap mt-5">
                 {/* gap-2 */}
                 {product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod" ? (
                   <>
-                    <p className="text-base font-medium tracking-wide leading-8 mr-1 mb-2">
+                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                       Vị:
                     </p>
                     {product.image.map((item: any, index: any) => (
@@ -219,7 +237,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         key={index}
                         className={`${
                           item.instock === false && `bg-gray-200`
-                        } mx-1 mb-2 font-semibold border border-black bg-gray-800 text-white rounded-sm py-[2px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                        } mx-1 mb-2 rounded-md font-semibold border border-black bg-gray-800 text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
                       >
                         {item.name}
                       </span>
@@ -227,7 +245,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </>
                 ) : (
                   <>
-                    <p className="text-base font-normal tracking-wide leading-8">
+                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                       Màu:
                     </p>
                     {product.image.map((item: any, index: any) => (
@@ -237,7 +255,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           item.instock
                             ? `bg-gray-800 border-black`
                             : `bg-gray-300 border-gray-300`
-                        } font-semibold border text-white rounded-sm py-[1px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                        } font-semibold border text-white rounded-md py-[1px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
                       >
                         {item.name}
                       </span>
@@ -251,8 +269,8 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 href="https://www.facebook.com/messages/t/100006177676042"
                 passHref
               >
-                <div className="border border-red-400 py-3 px-5 rounded-md cursor-pointer group hover:bg-red-400 transition-all duration-150 ease-linear">
-                  <a className="uppercase font-medium text-red-400 tracking-wide group-hover:text-white">
+                <div className="bg-rose-400 py-3 px-5 rounded-md cursor-pointer group hover:bg-rose-500 transition-all duration-150 ease-linear">
+                  <a className="uppercase font-medium text-white tracking-wide group-hover:text-white">
                     Mua ngay
                   </a>
                 </div>

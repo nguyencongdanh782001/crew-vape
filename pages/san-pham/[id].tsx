@@ -259,7 +259,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod" ? (
                   <>
-                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
                       Vị:
                     </p>
                     {product.image.map((item: any, index: any) => (
@@ -275,7 +275,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </>
                 ) : (
                   <>
-                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
+                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
                       Màu:
                     </p>
                     {product.image.map((item: any, index: any) => (

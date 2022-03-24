@@ -266,8 +266,10 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                       <span
                         key={index}
                         className={`${
-                          item.instock === false && `bg-gray-200`
-                        } mx-1 mb-2 rounded-md font-semibold border border-black bg-gray-800 text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                          item.instock
+                            ? `bg-gray-800 border-black`
+                            : `bg-gray-300 border-gray-300`
+                        } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
                       >
                         {item.name}
                       </span>
@@ -285,7 +287,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           item.instock
                             ? `bg-gray-800 border-black`
                             : `bg-gray-300 border-gray-300`
-                        } font-semibold border text-white rounded-md py-[1px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                        } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
                       >
                         {item.name}
                       </span>

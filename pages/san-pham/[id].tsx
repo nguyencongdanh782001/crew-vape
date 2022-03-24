@@ -1,6 +1,6 @@
 // import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
@@ -13,6 +13,7 @@ import ListProductDetail from "../../components/ListproductDetail/ListProductDet
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export const SampleNextArrow = (props: any) => {
   const { onClick } = props;
@@ -49,6 +50,14 @@ export const SamplePrevArrow = (props: any) => {
 const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
+  const [filterRelated, setFilterRelated] = useState<any>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    setFilterRelated(
+      relatedProduct.product.filter((item: any) => item._id !== router.query.id)
+    );
+  }, [router.query.id, relatedProduct]);
 
   const settings = {
     infinite: true,
@@ -61,6 +70,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   return (
     <LayoutProduct>
       <Head>
@@ -84,7 +94,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             </a>
           </Link>
           <p>&nbsp;/&nbsp;</p>
-          <p color="text.primary" className="font-medium">
+          <p color="text.primary" className="font-semibold">
             {product.name}
           </p>
         </div>
@@ -101,7 +111,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                     {...settings}
                   >
                     {product.image.map((item: any, index: any) => (
-                      <div key={index}>
+                      <div key={index} className="relative">
                         <Zoom>
                           <img
                             src={item.image}
@@ -109,6 +119,13 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                             className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
                           />
                         </Zoom>
+                        {item?.instock === false && (
+                          <div className="absolute top-0 right-0 px-3 h-10 z-10 bg-black flex items-center justify-center">
+                            <p className="text-white text-center text-base uppercase tracking-widest font-thin">
+                              Hết hàng
+                            </p>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </Slider>
@@ -139,7 +156,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             ) : (
               <div className="h-[27rem]">
                 {product.image.map((item: any, index: any) => (
-                  <div key={index}>
+                  <div key={index} className="relative">
                     <Zoom>
                       <img
                         src={item.image}
@@ -147,6 +164,13 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
                       />
                     </Zoom>
+                    {item?.instock === false && (
+                      <div className="absolute top-0 right-0 px-3 h-10 z-10 bg-black flex items-center justify-center">
+                        <p className="text-white text-center text-base uppercase tracking-widest font-thin">
+                          Hết hàng
+                        </p>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -160,31 +184,40 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               <p className="text-sm text-gray-500 tracking-wide leading-7 mb-2">
                 {product.desc}
               </p>
-              <h1 className="text-2xl font-bold leading-8 tracking-widest text-left text-rose-600 mb-2">
-                {product.price}đ
-              </h1>
-
+              <div className="flex justify-start items-center">
+                {product.sale > 0 && (
+                  <h1 className="mr-2 text-2xl font-bold leading-8 tracking-widest text-left text-rose-500 mb-2">
+                    {product.sale}₫
+                  </h1>
+                )}
+                <h1
+                  className={`${
+                    product.sale > 0
+                      ? "text-gray-400 line-through text-xl"
+                      : "text-rose-500 text-2xl"
+                  } font-bold leading-8 tracking-widest text-left mb-2`}
+                >
+                  {product.price}₫
+                </h1>
+              </div>
               <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                 Tình trạng:&nbsp;&nbsp;
                 <span className="text-rose-700 text-sm font-base">
                   {product.instock ? "còn hàng" : "hết hàng"}
                 </span>
               </p>
-
               <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                 Loại sản phẩm:&nbsp;&nbsp;
                 <span className="text-rose-700 text-sm font-base">
                   {product.category.name}
                 </span>
               </p>
-
               <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                 thương hiệu:&nbsp;&nbsp;
                 <span className="text-rose-700 text-sm font-base">
                   {product.brand.name}
                 </span>
               </p>
-
               {product.category.slug === "disposable-pod" && (
                 <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                   Số hơi(puffs):&nbsp;&nbsp;
@@ -193,7 +226,6 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </span>
                 </p>
               )}
-
               {(product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod") && (
@@ -204,7 +236,6 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </span>
                 </p>
               )}
-
               {(product.category.slug === "freebase" ||
                 product.category.slug === "saltnic") && (
                 <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
@@ -214,7 +245,6 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </span>
                 </p>
               )}
-
               {product.category.slug === "disposable-pod" && (
                 <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
                   Battery:&nbsp;&nbsp;
@@ -280,7 +310,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
         </div>
         <div className="mt-10 pl-4">
           <h1 className="font-medium text-xl pl-2 mb-5">Sản phẩm liên quan</h1>
-          <ListProductDetail data={relatedProduct.product} />
+          <ListProductDetail data={filterRelated} />
         </div>
       </div>
     </LayoutProduct>
@@ -296,7 +326,7 @@ export async function getServerSideProps(context: any) {
   const product = await resProduct.json();
 
   const resRelatedProduct = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=4&&cat=${product.category.slug}`
+    `https://vape-store.herokuapp.com/api/product?page=1&&limit=4&&cat=${product.category.slug}`
   );
   const relatedProduct = await resRelatedProduct.json();
 

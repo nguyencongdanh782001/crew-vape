@@ -46,11 +46,19 @@ const PhuKien = ({ phuKien }: any) => {
       );
     } else if (filter === "newest") {
       setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+        [...prev].sort((a, b) => {
+          return (
+            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
+          );
+        })
       );
     } else if (filter === "oldest") {
       setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => b.createdAt - a.createdAt)
+        [...prev].sort((a, b) => {
+          return (
+            (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
+          );
+        })
       );
     }
   }, [filter]);
@@ -88,7 +96,7 @@ const PhuKien = ({ phuKien }: any) => {
             <a className="hover:underline text-base font-normal ">Trang chủ</a>
           </Link>
           <p>&nbsp;/&nbsp;</p>
-          <p color="text.primary" className="font-medium">
+          <p color="text.primary" className="font-semibold">
             Phụ kiện
           </p>
         </div>

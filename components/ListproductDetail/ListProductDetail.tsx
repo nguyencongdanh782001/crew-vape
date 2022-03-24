@@ -20,6 +20,7 @@ interface PropsType {
       nicotine: string;
       instock: boolean;
       price: number;
+      sale: number;
       image: [
         {
           name: string;

@@ -20,6 +20,7 @@ interface PropsType {
     nicotine: string;
     instock: boolean;
     price: number;
+    sale: number;
     image: [
       {
         name: string;
@@ -43,6 +44,21 @@ const ProductDetailItem = ({ data }: PropsType) => {
           <i className="w-9 h-9 bg-black rounded-full flex justify-center items-center absolute opacity-0 -bottom-1 left-[45%] group-hover:-translate-y-5 group-hover:opacity-100 transition-all duration-500">
             <FaCartPlus className="text-white text-base" />
           </i>
+          {data?.instock ? (
+            data?.sale > 0 && (
+              <div className="absolute right-0 top-0 px-2 bg-black flex items-center justify-center">
+                <p className="text-white text-center text-sm sm:text-base uppercase tracking-widest font-thin">
+                  -{(data?.sale * 100) / data?.price}%
+                </p>
+              </div>
+            )
+          ) : (
+            <div className="absolute left-0 right-0 top-20 h-10 z-10 bg-black flex items-center justify-center">
+              <p className="text-white text-center text-xl uppercase tracking-widest font-thin">
+                Hết hàng
+              </p>
+            </div>
+          )}
         </div>
         <div className="w-full flex flex-col justify-center items-center pt-3 pb-2 bg-white">
           <h5
@@ -51,9 +67,22 @@ const ProductDetailItem = ({ data }: PropsType) => {
           >
             {data?.name}
           </h5>
-          <span className="text-center text-red-500 uppercase font-medium text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
-            {data?.price}₫
-          </span>
+          <div className="flex justify-center items-center">
+            {data?.sale > 0 && (
+              <span className="mr-2 text-red-500 text-center uppercase font-medium text-sm  md:text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
+                200.00{data?.sale}₫
+              </span>
+            )}
+            <span
+              className={`${
+                data?.sale > 0
+                  ? "text-gray-400 line-through sm:text-base"
+                  : "text-red-500 sm:text-lg"
+              } text-center font-medium text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden`}
+            >
+              {data?.price}₫
+            </span>
+          </div>
         </div>
       </div>
     </Link>

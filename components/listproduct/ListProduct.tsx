@@ -25,6 +25,7 @@ interface PropsType {
       nicotine: string;
       instock: boolean;
       price: number;
+      sale: number;
       image: [
         {
           name: string;
@@ -69,7 +70,7 @@ const ListProduct = ({ heading, data, link }: PropsType) => {
           <div className="border-[0.5px] left-0 right-0 absolute h-[3px] bg-gray-800"></div>
         </div>
         <div
-          className="max-w-7xl flex justify-center flex-wrap items-center "
+          className="max-w-7xl flex justify-center flex-wrap items-start "
           data-aos="fade-up"
         >
           {/* gap-7 */}

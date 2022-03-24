@@ -70,7 +70,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
           <div className="flex justify-center items-center">
             {data?.sale > 0 && (
               <span className="mr-2 text-red-500 text-center uppercase font-medium text-sm  md:text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
-                200.00{data?.sale}₫
+                200.00{data?.sale}.000₫
               </span>
             )}
             <span
@@ -80,7 +80,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
                   : "text-red-500 sm:text-lg"
               } text-center font-medium text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden`}
             >
-              {data?.price}₫
+              {data?.price}.000₫
             </span>
           </div>
         </div>

@@ -187,7 +187,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               <div className="flex justify-start items-center">
                 {product.sale > 0 && (
                   <h1 className="mr-2 text-2xl font-bold leading-8 tracking-widest text-left text-rose-500 mb-2">
-                    {product.sale}₫
+                    {product.sale}.000₫
                   </h1>
                 )}
                 <h1
@@ -197,7 +197,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                       : "text-rose-500 text-2xl"
                   } font-bold leading-8 tracking-widest text-left mb-2`}
                 >
-                  {product.price}₫
+                  {product.price}.000₫
                 </h1>
               </div>
               <p className="text-base font-medium text-gray-500 tracking-wide leading-7">

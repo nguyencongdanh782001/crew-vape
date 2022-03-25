@@ -140,6 +140,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                     swipeToSlide={true}
                     {...settings2}
                     focusOnSelect={true}
+                    className={``}
                   >
                     {product.image.map((item: any, index: any) => (
                       <div key={index} className="mx-[6px]">

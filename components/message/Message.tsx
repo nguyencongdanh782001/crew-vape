@@ -4,7 +4,7 @@ const Message = () => {
   return (
     <div className="fixed bottom-10 right-5 sm:bottom-8 sm:right-8 flex items-center justify-center">
       <a
-        href="https://www.facebook.com/TheCrewStation"
+        href="https://www.facebook.com/messages/t/101771795195686"
         target="_blank"
         rel="noreferrer"
         className="p-3 bg-blue-500 rounded-full shadow-lg shadow-gray-500"

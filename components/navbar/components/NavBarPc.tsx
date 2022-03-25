@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
 import { TEXT_CREW } from "../../../public/assets/global-image";
 import useDebounce from "../../debounce/useDebounce";
+import { useOnClickOutside } from "../../useOnclickoutside/useOnclickoutside";
 
 const NavBarPc = () => {
   const router = useRouter();
@@ -35,6 +36,15 @@ const NavBarPc = () => {
       shallow: false,
     });
   };
+
+  const searchInputRef = useRef<any>();
+
+  const [showListSearch, setShowListSearch] = useState(false);
+
+  useOnClickOutside(searchInputRef, (e) => {
+    setShowListSearch(false);
+  });
+
   return (
     <div
       className={`flex ${
@@ -89,6 +99,8 @@ const NavBarPc = () => {
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="relative group mx-[40px]"
+        ref={searchInputRef}
+        onClick={() => setShowListSearch(true)}
       >
         <input
           type="text"
@@ -103,7 +115,7 @@ const NavBarPc = () => {
         </i>
         <ul
           className={`${
-            searchValue !== "" ? "block" : "hidden"
+            showListSearch ? "block" : "hidden"
           } mt-1 border border-gray-300 right-0 left-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
         >
           {isLoading ? (
@@ -137,10 +149,10 @@ const NavBarPc = () => {
               ))}
 
               {listSearch?.product.length < 1 ? (
-                <li className="px-2 py-3 flex items-center justify-center">
+                <li className="px-2 py-3 flex items-start justify-center">
                   {/* gap-1  */}
                   <IoSearchOutline className="text-lg mr-1" />
-                  <p className="text-center text-sm tracking-wider">
+                  <p className="text-center text-sm tracking-wider break-words max-w-[250px]">
                     {`Không tìm thấy kết quả cho "${searchValue}"`}
                   </p>
                 </li>
@@ -156,13 +168,18 @@ const NavBarPc = () => {
                   </Link>
                 </li>
               ) : (
-                <li className="px-2 py-3">
-                  <Link href={`/search?page=1&&search=${searchValue}`} passHref>
-                    <p className="text-center text-sm tracking-wider hover:text-red-400 cursor-pointer">
-                      Xem thêm
-                    </p>
-                  </Link>
-                </li>
+                listSearch?.product.length < 2 && (
+                  <li className="px-2 py-3">
+                    <Link
+                      href={`/search?page=1&&search=${searchValue}`}
+                      passHref
+                    >
+                      <p className="text-center text-sm tracking-wider hover:text-red-400 cursor-pointer">
+                        Xem thêm
+                      </p>
+                    </Link>
+                  </li>
+                )
               )}
             </>
           )}

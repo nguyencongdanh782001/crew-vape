@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { TEXT_CREW } from "../../../public/assets/global-image";
 import { HiMenu } from "react-icons/hi";
@@ -9,6 +9,7 @@ import { GrClose } from "react-icons/gr";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import useDebounce from "../../debounce/useDebounce";
 import { IoSearchOutline } from "react-icons/io5";
+import { useOnClickOutside } from "../../useOnclickoutside/useOnclickoutside";
 
 interface OpenType {
   open: boolean;
@@ -52,6 +53,15 @@ const NavBarMobile = () => {
       shallow: false,
     });
   };
+
+  const searchInputRef = useRef<any>();
+
+  const [showListSearch, setShowListSearch] = useState(false);
+
+  useOnClickOutside(searchInputRef, (e) => {
+    setShowListSearch(false);
+  });
+
   return (
     <div className="flex justify-between items-center py-2 px-3 sm:px-4">
       <div className="flex justify-center items-center">
@@ -69,10 +79,15 @@ const NavBarMobile = () => {
           </Link>
         </div>
       </div>
-      <form onSubmit={(e) => handleSubmit(e)} className="relative">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="relative"
+        ref={searchInputRef}
+        onClick={() => setShowListSearch(true)}
+      >
         <input
           type="text"
-          className="h-7 w-[210px] sm:w-[230px] rounded-full outline-none pl-[38px] py-4 pr-4 font-medium text-sm text-gray-500 border border-solid border-gray-400"
+          className="h-7 w-[210px] sm:w-[300px] rounded-full outline-none pl-[38px] py-4 pr-4 font-medium text-sm text-gray-500 border border-solid border-gray-400"
           placeholder="Search..."
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
@@ -82,8 +97,8 @@ const NavBarMobile = () => {
         </i>
         <ul
           className={`${
-            searchValue !== "" ? "block" : "hidden"
-          }  border border-gray-300 left-0 right-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
+            showListSearch ? "block" : "hidden"
+          }  border border-gray-300 -left-12 sm:left-0 right-0 z-20 overflow-hidden absolute bg-gray-50 rounded-md`}
         >
           {isLoading ? (
             <li>
@@ -126,19 +141,24 @@ const NavBarMobile = () => {
                   </Link>
                 </li>
               ) : (
-                <li className="px-2 py-3">
-                  <Link href={`/search?page=1&&search=${searchValue}`} passHref>
-                    <p className="text-center text-sm tracking-wider hover:text-red-400 cursor-pointer">
-                      Xem thêm
-                    </p>
-                  </Link>
-                </li>
+                listSearch?.product.length >= 2 && (
+                  <li className="px-2 py-3">
+                    <Link
+                      href={`/search?page=1&&search=${searchValue}`}
+                      passHref
+                    >
+                      <p className="text-center text-sm tracking-wider hover:text-red-400 cursor-pointer">
+                        Xem thêm
+                      </p>
+                    </Link>
+                  </li>
+                )
               )}
               {listSearch?.product.length < 1 && (
-                <li className="px-2 py-3 flex items-center justify-center">
+                <li className="px-2 py-3 flex items-center justify-center max-w-[220px] sm:max-w-[300px]">
                   {/* gap-1 */}
                   <IoSearchOutline className="text-lg mr-1" />
-                  <p className="text-center text-sm tracking-wider">
+                  <p className="text-center text-sm tracking-wider max-w-[220px] sm:max-w-[300px] break-words">
                     {`Không tìm thấy kết quả cho "${searchValue}"`}
                   </p>
                 </li>

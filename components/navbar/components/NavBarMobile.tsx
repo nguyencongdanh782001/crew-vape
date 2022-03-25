@@ -57,15 +57,13 @@ const NavBarMobile = () => {
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center">
           <Link href="/" passHref>
-            <a href="/">
-              <Image
-                src={TEXT_CREW}
-                alt="Picture of the author"
-                width={80}
-                height={20}
-                className="cursor-pointer"
-              />
-            </a>
+            <Image
+              src={TEXT_CREW}
+              alt="Picture of the author"
+              width={80}
+              height={20}
+              className="cursor-pointer"
+            />
           </Link>
         </div>
       </div>

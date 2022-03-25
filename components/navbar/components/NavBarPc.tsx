@@ -45,14 +45,12 @@ const NavBarPc = () => {
       <div className="mr-[40px]">
         <div className="w-full cursor-pointer">
           <Link href="/" passHref>
-            <a href="/">
-              <Image
-                src={TEXT_CREW}
-                alt="Picture of the author"
-                width={130}
-                height={30}
-              />
-            </a>
+            <Image
+              src={TEXT_CREW}
+              alt="Picture of the author"
+              width={130}
+              height={30}
+            />
           </Link>
         </div>
       </div>

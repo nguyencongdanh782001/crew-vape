@@ -7,7 +7,7 @@ const Message = () => {
         href="https://www.facebook.com/messages/t/101771795195686"
         target="_blank"
         rel="noreferrer"
-        className="p-3 bg-blue-500 rounded-full shadow-lg shadow-gray-500"
+        className="p-3 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-full shadow-lg shadow-gray-500"
       >
         <i>
           <BsMessenger className="text-2xl sm:text-3xl text-white" />

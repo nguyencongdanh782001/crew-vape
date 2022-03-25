@@ -1,6 +1,6 @@
 // import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
@@ -51,11 +51,16 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [filterRelated, setFilterRelated] = useState<any>([]);
+  const [imageSelect, setImageSelect] = useState({});
   const router = useRouter();
+
+  const sliderRef = useRef<any>();
 
   useEffect(() => {
     setFilterRelated(
-      relatedProduct.product.filter((item: any) => item._id !== router.query.id)
+      relatedProduct?.product.filter(
+        (item: any) => item._id !== router.query.id
+      )
     );
   }, [router.query.id, relatedProduct]);
 
@@ -116,7 +121,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           <img
                             src={item.image}
                             alt=""
-                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
+                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain "
                           />
                         </Zoom>
                         {item?.instock === false && (
@@ -147,7 +152,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         <img
                           src={item.image}
                           alt=""
-                          className="w-[120px] h-[7rem] object-contain cursor-pointer"
+                          className="w-[120px] h-[7rem] object-contain cursor-pointer border border-gray-400"
                         />
                       </div>
                     ))}
@@ -188,7 +193,8 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               <div className="flex justify-start items-center">
                 {product.sale > 0 && (
                   <h1 className="mr-2 text-2xl font-bold leading-8 tracking-widest text-left text-rose-500 mb-2">
-                    {product.sale}.000₫
+                    {(product.sale * 1000).toLocaleString().replace(/\,/g, ".")}
+                    ₫
                   </h1>
                 )}
                 <h1
@@ -198,7 +204,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                       : "text-rose-500 text-2xl"
                   } font-bold leading-8 tracking-widest text-left mb-2`}
                 >
-                  {product.price}.000₫
+                  {(product.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
                 </h1>
               </div>
               <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
@@ -259,42 +265,28 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 {product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod" ? (
-                  <>
-                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
-                      Vị:
-                    </p>
-                    {product.image.map((item: any, index: any) => (
-                      <span
-                        key={index}
-                        className={`${
-                          item.instock
-                            ? `bg-gray-800 border-black`
-                            : `bg-gray-300 border-gray-300`
-                        } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
-                      >
-                        {item.name}
-                      </span>
-                    ))}
-                  </>
+                  <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
+                    Vị:
+                  </p>
                 ) : (
-                  <>
-                    <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
-                      Màu:
-                    </p>
-                    {product.image.map((item: any, index: any) => (
-                      <span
-                        key={index}
-                        className={`${
-                          item.instock
-                            ? `bg-gray-800 border-black`
-                            : `bg-gray-300 border-gray-300`
-                        } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
-                      >
-                        {item.name}
-                      </span>
-                    ))}
-                  </>
+                  <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
+                    Màu:
+                  </p>
                 )}
+                {product.image.map((item: any, index: any) => (
+                  <button
+                    onClick={() => (nav1 as any).slickGoTo(index)}
+                    key={index}
+                    disabled={product.image.length > 1 ? false : true}
+                    className={`${
+                      item.instock
+                        ? `bg-gray-800 border-black`
+                        : `bg-gray-300 border-gray-300`
+                    } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                  >
+                    {item.name}
+                  </button>
+                ))}
               </div>
             </div>
             <div className="flex mt-6">

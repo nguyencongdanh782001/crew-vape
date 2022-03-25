@@ -68,7 +68,7 @@ const ProductItem = ({ data }: PropsType) => {
           <div className="flex justify-center items-center">
             {data?.sale > 0 && (
               <span className="mr-2 text-red-500 text-center uppercase font-medium text-sm  md:text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
-                {data?.sale}.000₫
+                {(data?.sale * 1000).toLocaleString().replace(/\,/g, ".")}₫
               </span>
             )}
             <span
@@ -76,7 +76,7 @@ const ProductItem = ({ data }: PropsType) => {
                 data?.sale > 0 ? "text-gray-400 line-through" : "text-gray-900"
               } text-center uppercase font-medium text-sm  md:text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden`}
             >
-              {data?.price}.000₫
+              {(data?.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
             </span>
           </div>
         </div>

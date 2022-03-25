@@ -297,16 +297,16 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               </div>
             </div>
             <div className="flex mt-6">
-              <Link
-                href="https://www.facebook.com/messages/t/100006177676042"
-                passHref
-              >
-                <div className="bg-rose-400 py-3 px-5 rounded-md cursor-pointer group hover:bg-rose-500 transition-all duration-150 ease-linear">
-                  <a className="uppercase font-medium text-white tracking-wide group-hover:text-white">
-                    Mua ngay
-                  </a>
-                </div>
-              </Link>
+              <div className="bg-rose-400 py-3 px-5 rounded-md cursor-pointer group hover:bg-rose-500 transition-all duration-150 ease-linear">
+                <a
+                  href="https://www.facebook.com/messages/t/100006177676042"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="uppercase font-medium text-white tracking-wide group-hover:text-white"
+                >
+                  Mua ngay
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -43,16 +43,18 @@ const NavBarPc = () => {
     >
       {/* gap-x-20 */}
       <div className="mr-[40px]">
-        <Link href="/" passHref>
-          <div className="w-full cursor-pointer">
-            <Image
-              src={TEXT_CREW}
-              alt="Picture of the author"
-              width={130}
-              height={30}
-            />
-          </div>
-        </Link>
+        <div className="w-full cursor-pointer">
+          <Link href="/" passHref>
+            <a href="/">
+              <Image
+                src={TEXT_CREW}
+                alt="Picture of the author"
+                width={130}
+                height={30}
+              />
+            </a>
+          </Link>
+        </div>
       </div>
       {router.pathname === "/" && (
         <ul className="flex justify-center items-center mx-[40px]">

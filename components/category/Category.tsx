@@ -32,12 +32,12 @@ const Category = () => {
       <div className="flex justify-center items-center  flex-wrap max-w-7xl">
         {/* gap-6 */}
         {category?.map((item, index) => (
-          <Link href={`/san-pham/${item.slug}`} key={index} passHref>
+          <Link href={`/san-pham/${item.slug}?page=1`} key={index} passHref>
             <div
               data-aos="fade-up"
-              className="relative flex items-center jus cursor-pointer overflow-hidden group rounded-lg m-3"
+              className="relative flex items-center jus cursor-pointer overflow-hidden group rounded-lg m-1 md:m-3"
             >
-              <div className="w-[320px] sm:w-[300px] md:w-[350px] lg:w-[580px] h-[150px] sm:h-[200px] md:h-[200px] lg:h-[300px]">
+              <div className="w-[170px] sm:w-[300px] md:w-[230px] lg:w-[350px] h-[110px] sm:h-[200px] md:h-[150px] lg:h-[200px]">
                 <img
                   src={item?.image || ""}
                   alt={item?.title}
@@ -46,16 +46,16 @@ const Category = () => {
               </div>
               <div className="absolute m-auto group-hover:scale-110 transition-all duration-200 ease-linear w-full left-0 right-0 z-10">
                 <h4
-                  className="uppercase text-center font-semibold text-white text-2xl tracking-wider leading-10"
+                  className="uppercase text-center font-semibold text-white text-base md:text-2xl tracking-wider leading-7 md:leading-10"
                   style={{ textShadow: "2px 2px 2px #000" }}
                 >
                   {item?.title}
                 </h4>
                 <p
-                  className="uppercase text-center font-normal text-white text-base tracking-wider"
+                  className="uppercase text-center font-normal text-white text-xs md:text-base tracking-wider"
                   style={{ textShadow: "1.5px 1.5px 1.5px #000" }}
                 >
-                  danh mục tinh dầu {item?.title}
+                  danh mục {item?.title}
                 </p>
               </div>
               <div className="absolute top-0 right-0 bottom-0 left-0 bg-black opacity-20 group-hover:opacity-60 transition-all duration-200"></div>

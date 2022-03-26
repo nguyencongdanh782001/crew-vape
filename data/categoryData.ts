@@ -6,16 +6,27 @@ const category = [
     slug: "freebase",
   },
   {
+    title: "saltnic",
+    image:
+      "https://thevape.vn/wp-content/uploads/2021/04/usalt-salt-nic-vape24h-1400x685.jpg",
+    slug: "saltnic",
+  },
+  {
+    title: "pod một lần",
+    image: "https://applevapestore.com/wp-content/uploads/2021/11/1-8.jpg",
+    slug: "disposable-pod",
+  },
+  {
     title: "pod mod",
     image:
       "https://vapeclub.vn/wp-content/uploads/2021/06/aspire_favostix_pod_kit_a-1-627x400.jpg",
     slug: "pod-mod",
   },
   {
-    title: "saltnic",
+    title: "box tank",
     image:
-      "https://thevape.vn/wp-content/uploads/2021/04/usalt-salt-nic-vape24h-1400x685.jpg",
-    slug: "saltnic",
+      "https://vapechinhhang.com/wp-content/uploads/2019/11/Geekvape-Zeus-Sub-Ohm-Tank-Ch%C3%ADnh-H%C3%A3ng-1.jpg",
+    slug: "box-tank",
   },
   {
     title: "phụ kiện",

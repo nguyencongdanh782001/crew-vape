@@ -54,7 +54,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
             )
           ) : (
             <div className="absolute left-0 right-0 top-20 h-10 z-10 bg-black flex items-center justify-center">
-              <p className="text-white text-center text-xl uppercase tracking-widest font-thin">
+              <p className="text-white text-center text-xl uppercase tracking-widest font-light">
                 Hết hàng
               </p>
             </div>
@@ -62,23 +62,21 @@ const ProductDetailItem = ({ data }: PropsType) => {
         </div>
         <div className="w-full flex flex-col justify-center items-center pt-3 pb-2 bg-white">
           <h5
-            className="text-center uppercase font-medium text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px]  min-h-[30px] max-h-[30px] line-clamp-2 overflow-hidden"
+            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px] max-h-[20px] line-clamp-2 overflow-hidden"
             style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
           >
             {data?.name}
           </h5>
           <div className="flex justify-center items-center">
             {data?.sale > 0 && (
-              <span className="mr-2 text-red-500 text-center uppercase font-medium text-sm  md:text-lg tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
+              <span className="mr-2 text-black text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
                 {(data?.sale * 1000).toLocaleString().replace(/\,/g, ".")}₫
               </span>
             )}
             <span
               className={`${
-                data?.sale > 0
-                  ? "text-gray-400 line-through sm:text-base"
-                  : "text-red-500 sm:text-lg"
-              } text-center font-medium text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden`}
+                data?.sale > 0 ? "text-gray-300 line-through" : "text-black"
+              } text-center font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden`}
             >
               {(data?.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
             </span>

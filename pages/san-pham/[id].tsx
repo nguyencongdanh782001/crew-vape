@@ -1,20 +1,19 @@
-// import { Breadcrumbs, Typography } from "@mui/material";
+import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import { BsDot } from "react-icons/bs";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
-import Head from "next/head";
-import { useRouter } from "next/router";
-
 export const SampleNextArrow = (props: any) => {
   const { onClick } = props;
   return (
@@ -184,15 +183,12 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
           </div>
           <div className="w-screen px-8 pt-5 sm:pt-0 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem]">
             <div className="mt-2">
-              <h1 className="text-3xl text-gray-900 font-medium mb-2 leading-8 tracking-wider text-left capitalize">
+              <h1 className="pb-2 border-b border-dotted border-gray-300 text-xl text-gray-900 font-semibold mb-2 leading-8 tracking-wider text-left capitalize">
                 {product.name}
               </h1>
-              <p className="text-sm text-gray-500 tracking-wide leading-7 mb-2">
-                {product.desc}
-              </p>
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-2 pt-1 mb-2 border-b border-dotted border-gray-300">
                 {product.sale > 0 && (
-                  <h1 className="mr-2 text-2xl font-bold leading-8 tracking-widest text-left text-rose-500 mb-2">
+                  <h1 className="mr-2 text-lg font-semibold leading-8 tracking-wider text-left text-black">
                     {(product.sale * 1000).toLocaleString().replace(/\,/g, ".")}
                     ₫
                   </h1>
@@ -200,76 +196,23 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 <h1
                   className={`${
                     product.sale > 0
-                      ? "text-gray-400 line-through text-xl"
-                      : "text-rose-500 text-2xl"
-                  } font-bold leading-8 tracking-widest text-left mb-2`}
+                      ? "text-gray-300 line-through text-base"
+                      : "text-black text-lg"
+                  } font-semibold leading-8 tracking-wider text-left`}
                 >
                   {(product.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
                 </h1>
               </div>
-              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                Tình trạng:&nbsp;&nbsp;
-                <span className="text-rose-700 text-sm font-base">
-                  {product.instock ? "còn hàng" : "hết hàng"}
-                </span>
-              </p>
-              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                Loại sản phẩm:&nbsp;&nbsp;
-                <span className="text-rose-700 text-sm font-base">
-                  {product.category.name}
-                </span>
-              </p>
-              <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                thương hiệu:&nbsp;&nbsp;
-                <span className="text-rose-700 text-sm font-base">
-                  {product.brand.name}
-                </span>
-              </p>
-              {product.category.slug === "disposable-pod" && (
-                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                  Số hơi(puffs):&nbsp;&nbsp;
-                  <span className="text-rose-700 text-sm font-base">
-                    {product.puffs}
-                  </span>
-                </p>
-              )}
-              {(product.category.slug === "freebase" ||
-                product.category.slug === "saltnic" ||
-                product.category.slug === "disposable-pod") && (
-                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                  Liều lượng nicotine: &nbsp;&nbsp;
-                  <span className="text-rose-700 text-sm font-base">
-                    {product.nicotine}
-                  </span>
-                </p>
-              )}
-              {(product.category.slug === "freebase" ||
-                product.category.slug === "saltnic") && (
-                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                  Dung tích:&nbsp;&nbsp;
-                  <span className="text-rose-700 text-sm font-base">
-                    {product.capacity}
-                  </span>
-                </p>
-              )}
-              {product.category.slug === "disposable-pod" && (
-                <p className="text-base font-medium text-gray-500 tracking-wide leading-7">
-                  Battery:&nbsp;&nbsp;
-                  <span className="text-rose-700 text-sm font-base">
-                    {product.battery}
-                  </span>
-                </p>
-              )}
-              <div className="flex flex-wrap mt-5">
+              <div className="flex flex-wrap pt-2 pb-2 border-b border-dotted border-gray-300">
                 {/* gap-2 */}
                 {product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
                 product.category.slug === "disposable-pod" ? (
-                  <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
+                  <p className="mb-1 text-sm font-normal text-gray-800 tracking-wide leading-7 mr-1">
                     Vị:
                   </p>
                 ) : (
-                  <p className="text-base font-medium text-gray-500 tracking-wide leading-7 mr-1">
+                  <p className="mb-1 text-sm font-normal text-gray-800 tracking-wide leading-7 mr-1">
                     Màu:
                   </p>
                 )}
@@ -277,28 +220,87 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   <button
                     onClick={() => (nav1 as any).slickGoTo(index)}
                     key={index}
-                    disabled={product.image.length > 1 ? false : true}
+                    disabled={
+                      item.instock || product.image.length > 1 ? false : true
+                    }
                     className={`${
                       item.instock
                         ? `bg-gray-800 border-black`
                         : `bg-gray-300 border-gray-300`
-                    } mx-1 mb-2 rounded-md font-semibold border text-white py-[2.5px] px-2 cursor-pointer transition-all duration-150 ease-linear`}
+                    } mx-1 mb-1 text-xs rounded-sm font-medium border text-white py-[0.5px] px-[5px] cursor-pointer transition-all duration-150 ease-linear`}
                   >
                     {item.name}
                   </button>
                 ))}
               </div>
-            </div>
-            <div className="flex mt-6">
-              <div className="bg-rose-400 py-3 px-5 rounded-md cursor-pointer group hover:bg-rose-500 transition-all duration-150 ease-linear">
-                <a
-                  href="https://www.facebook.com/messages/t/100006177676042"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="uppercase font-medium text-white tracking-wide group-hover:text-white"
-                >
-                  Mua ngay
-                </a>
+              <div className="flex mt-5 mb-6">
+                <div className="bg-black py-3 px-24 rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear">
+                  <a
+                    href="https://www.facebook.com/messages/t/100006177676042"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="uppercase font-semibold text-xs text-white tracking-widest group-hover:text-black"
+                  >
+                    Mua ngay
+                  </a>
+                </div>
+              </div>
+              <div className="mb-5 flex flex-col">
+                <span className="text-sm tracking-wider font-semibold leading-5">
+                  Mô tả
+                </span>
+                <span className="text-sm text-gray-800 font-normal tracking-wide leading-6">
+                  {product.desc}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm tracking-wider font-semibold leading-5 ">
+                  Chi tiết sản phẩm
+                </span>
+                <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                  <span className="text-2xl mr-1">•</span> Tình trạng:&nbsp;
+                  {product.instock ? "còn hàng" : "hết hàng"}
+                </span>
+
+                <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                  <span className="text-2xl mr-1">•</span> Loại sản phẩm:&nbsp;
+                  {product.category.name}
+                </span>
+
+                <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                  <span className="text-2xl mr-1">•</span> Thương hiệu:&nbsp;
+                  {product.brand.name}
+                </span>
+
+                {product.category.slug === "disposable-pod" && (
+                  <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                    <span className="text-2xl mr-1">•</span> Số
+                    hơi(puffs):&nbsp;
+                    {product.puffs}
+                  </span>
+                )}
+                {(product.category.slug === "freebase" ||
+                  product.category.slug === "saltnic" ||
+                  product.category.slug === "disposable-pod") && (
+                  <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                    <span className="text-2xl mr-1">•</span> Liều lượng
+                    nicotine: &nbsp;
+                    {product.nicotine}
+                  </span>
+                )}
+                {(product.category.slug === "freebase" ||
+                  product.category.slug === "saltnic") && (
+                  <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                    <span className="text-2xl mr-1">•</span> Dung tích:&nbsp;
+                    {product.capacity}
+                  </span>
+                )}
+                {product.category.slug === "disposable-pod" && (
+                  <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
+                    <span className="text-2xl mr-1">•</span> Battery:&nbsp;
+                    {product.battery}
+                  </span>
+                )}
               </div>
             </div>
           </div>

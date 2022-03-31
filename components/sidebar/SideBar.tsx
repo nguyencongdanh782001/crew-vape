@@ -6,7 +6,7 @@ const SideBar = () => {
   const router = useRouter();
   return (
     <div className="bg-white w-[300px] flex flex-col h-full">
-      <div className="py-[26px] bg-slate-800">
+      <div className="py-[26px] bg-black">
         <h3 className="uppercase text-2xl text-center font-bold tracking-wide text-white">
           danh mục
         </h3>

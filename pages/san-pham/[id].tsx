@@ -91,7 +91,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             <a className="hover:underline text-base font-normal ">Trang chủ</a>
           </Link>
           <p>&nbsp;/&nbsp;</p>
-          <Link href="/" passHref>
+          <Link href={`/san-pham/${product.category.slug}?page=1`} passHref>
             <a className="hover:underline text-base font-normal ">
               {" "}
               {product.category.name}

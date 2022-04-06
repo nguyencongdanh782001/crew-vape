@@ -132,10 +132,30 @@ const NavBarPc = () => {
                         <p className="text-sm font-normal tracking-wider">
                           {item.name}
                         </p>
-                        <span className="text-sm font-light tracking-wider">
-                          {item.price}đ
-                        </span>
+                        <div className="flex justify-start items-center">
+                          {item?.sale > 0 && (
+                            <span className="mr-2 text-sm font-light tracking-wider">
+                              {(Math.round(item?.price - item?.sale) * 1000)
+                                .toLocaleString()
+                                .replace(/\,/g, ".")}
+                              ₫
+                            </span>
+                          )}
+                          <span
+                            className={`${
+                              item?.sale > 0
+                                ? "text-gray-300 line-through text-xs"
+                                : "text-black"
+                            } text-sm font-light tracking-wider`}
+                          >
+                            {(item?.price * 1000)
+                              .toLocaleString()
+                              .replace(/\,/g, ".")}
+                            ₫
+                          </span>
+                        </div>
                       </div>
+
                       <div className="h-12 w-12">
                         <img
                           src={item.image[0].image}

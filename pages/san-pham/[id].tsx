@@ -255,10 +255,14 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   Chi tiết sản phẩm
                 </span>
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1 font-bold">•</span> Tình
-                  trạng:&nbsp;
-                  <span className="font-bold">
-                    {product.instock ? "còn hàng" : "hết hàng"}
+                  <span className="text-2xl mr-1 font-bold">•</span>
+                  Tình trạng:&nbsp;
+                  <span
+                    className={`font-bold ${
+                      product?.instock == false && "text-red-500"
+                    }`}
+                  >
+                    {product.instock ? "Còn hàng" : "Hết hàng"}
                   </span>
                 </span>
 

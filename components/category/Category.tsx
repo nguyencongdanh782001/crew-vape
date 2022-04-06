@@ -27,6 +27,7 @@ const Category = () => {
       anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
     });
   }, []);
+  console.log(category);
   return (
     <section className="w-full flex justify-center mt-10">
       <div className="flex justify-center items-center  flex-wrap max-w-7xl">
@@ -39,7 +40,7 @@ const Category = () => {
             >
               <div className="w-[170px] sm:w-[300px] md:w-[230px] lg:w-[350px] h-[110px] sm:h-[200px] md:h-[150px] lg:h-[200px]">
                 <img
-                  src={item?.image || ""}
+                  src={`${item?.image}`}
                   alt={item?.title}
                   className="group-hover:scale-105 h-full w-full rounded-lg object-cover transition-all duration-200 ease-linear"
                 />

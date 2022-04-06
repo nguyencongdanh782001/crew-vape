@@ -10,7 +10,7 @@ const LayoutProduct = ({ children, scrollNavBar }: any) => {
     <div className="flex justify-end items-center bg-gray-100">
       <Warning />
       <Message />
-      <div className="flex justify-center w-[86rem]">
+      <div className="flex justify-center w-[90%]">
         <div className="h-screen grow-[0] hidden xl:block sticky top-0 z-30">
           <SideBar />
         </div>

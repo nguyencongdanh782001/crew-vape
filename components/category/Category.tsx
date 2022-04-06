@@ -27,7 +27,7 @@ const Category = () => {
       anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
     });
   }, []);
-  console.log(category);
+
   return (
     <section className="w-full flex justify-center mt-10">
       <div className="flex justify-center items-center  flex-wrap max-w-7xl">

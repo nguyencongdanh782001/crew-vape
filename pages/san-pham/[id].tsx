@@ -257,11 +257,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
                   <span className="text-2xl mr-1 font-bold">•</span>
                   Tình trạng:&nbsp;
-                  <span
-                    className={`font-bold ${
-                      product?.instock == false && "text-red-500"
-                    }`}
-                  >
+                  <span className="font-bold text-red-500">
                     {product.instock ? "Còn hàng" : "Hết hàng"}
                   </span>
                 </span>

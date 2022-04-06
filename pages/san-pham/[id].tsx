@@ -255,25 +255,28 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   Chi tiết sản phẩm
                 </span>
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1">•</span> Tình trạng:&nbsp;
+                  <span className="text-2xl mr-1 font-bold">•</span> Tình
+                  trạng:&nbsp;
                   <span className="font-bold">
                     {product.instock ? "còn hàng" : "hết hàng"}
                   </span>
                 </span>
 
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1">•</span> Loại sản phẩm:&nbsp;
+                  <span className="text-2xl mr-1 font-bold">•</span> Loại sản
+                  phẩm:&nbsp;
                   <span className="font-bold">{product.category.name}</span>
                 </span>
 
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1">•</span> Thương hiệu:&nbsp;
+                  <span className="text-2xl mr-1 font-bold">•</span> Thương
+                  hiệu:&nbsp;
                   <span className="font-bold"> {product.brand.name}</span>
                 </span>
 
                 {product.category.slug === "disposable-pod" && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1">•</span> Số
+                    <span className="text-2xl mr-1 font-bold">•</span> Số
                     hơi(puffs):&nbsp;
                     <span className="font-bold">{product.puffs}</span>
                   </span>
@@ -282,21 +285,23 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   product.category.slug === "saltnic" ||
                   product.category.slug === "disposable-pod") && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1">•</span> Liều lượng
-                    nicotine: &nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span> Liều
+                    lượng nicotine: &nbsp;
                     <span className="font-bold">{product.nicotine}</span>
                   </span>
                 )}
                 {(product.category.slug === "freebase" ||
                   product.category.slug === "saltnic") && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1">•</span> Dung tích:&nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span> Dung
+                    tích:&nbsp;
                     <span className="font-bold">{product.capacity}</span>
                   </span>
                 )}
                 {product.category.slug === "disposable-pod" && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1">•</span> Battery:&nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span>{" "}
+                    Battery:&nbsp;
                     <span className="font-bold">{product.battery}</span>
                   </span>
                 )}
@@ -309,7 +314,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             <span className="text-sm tracking-wider font-semibold leading-5">
               Mô tả
             </span>
-            <div className="text-sm text-gray-800 font-normal tracking-wide leading-6 mt-2">
+            <div className="text-[0.93rem] text-gray-800 font-normal tracking-wide leading-6 mt-2">
               {parse(product.desc)}
             </div>
           </div>

@@ -182,7 +182,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               </div>
             )}
           </div>
-          <div className="w-screen px-8 pt-5 sm:pt-0 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem]">
+          <div className="w-screen h-auto px-8 pt-5 sm:pt-0 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem]">
             <div className="mt-2">
               <h1 className="pb-2 border-b border-dotted border-gray-300 text-xl text-gray-900 font-semibold mb-2 leading-8 tracking-wider text-left capitalize">
                 {product.name}
@@ -206,7 +206,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   {(product.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
                 </h1>
               </div>
-              <div className="flex flex-wrap pt-2 pb-2 border-b border-dotted border-gray-300">
+              <div className="flex pt-1 pb-2 border-b border-dotted border-gray-300 h-full">
                 {/* gap-2 */}
                 {product.category.slug === "freebase" ||
                 product.category.slug === "saltnic" ||
@@ -219,22 +219,24 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                     Màu:
                   </p>
                 )}
-                {product.image.map((item: any, index: any) => (
-                  <button
-                    onClick={() => (nav1 as any).slickGoTo(index)}
-                    key={index}
-                    disabled={
-                      item.instock || product.image.length > 1 ? false : true
-                    }
-                    className={`${
-                      item.instock
-                        ? `bg-gray-800 border-black`
-                        : `bg-gray-300 border-gray-300`
-                    } mx-1 mb-1 text-xs rounded-sm font-medium border text-white py-[0.5px] px-[5px] cursor-pointer transition-all duration-150 ease-linear`}
-                  >
-                    {item.name}
-                  </button>
-                ))}
+                <div className="flex flex-wrap">
+                  {product.image.map((item: any, index: any) => (
+                    <button
+                      onClick={() => (nav1 as any).slickGoTo(index)}
+                      key={index}
+                      disabled={
+                        item.instock || product.image.length > 1 ? false : true
+                      }
+                      className={`${
+                        item.instock
+                          ? `bg-gray-800 border-black`
+                          : `bg-gray-300 border-gray-300`
+                      } mx-1 mb-1 mt-1 text-xs rounded-sm font-medium border text-white py-[0.5px] px-[5px] cursor-pointer transition-all duration-150 ease-linear`}
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div className="flex mt-5 mb-6">
                 <div className="bg-black py-3 px-24 rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear">

@@ -7,10 +7,10 @@ import Warning from "../warning/Warning";
 
 const LayoutProduct = ({ children, scrollNavBar }: any) => {
   return (
-    <div className="flex justify-end items-center bg-gray-100">
+    <div className="flex justify-end w-full items-center bg-gray-100">
       <Warning />
       <Message />
-      <div className="flex justify-center w-[90%]">
+      <div className="flex justify-center w-screen xl:w-[90%]">
         <div className="h-screen grow-[0] hidden xl:block sticky top-0 z-30">
           <SideBar />
         </div>

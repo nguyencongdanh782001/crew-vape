@@ -1,8 +1,8 @@
+import parse from "html-react-parser";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { BsDot } from "react-icons/bs";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
+
 export const SampleNextArrow = (props: any) => {
   const { onClick } = props;
   return (
@@ -151,7 +152,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         <img
                           src={item.image}
                           alt=""
-                          className="w-[120px] h-[7rem] object-contain cursor-pointer border border-gray-400"
+                          className="w-[120px] h-[7rem] object-contain cursor-pointer border border-gray-200"
                         />
                       </div>
                     ))}
@@ -188,8 +189,10 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               </h1>
               <div className="flex justify-start items-center pb-2 pt-1 mb-2 border-b border-dotted border-gray-300">
                 {product.sale > 0 && (
-                  <h1 className="mr-2 text-lg font-semibold leading-8 tracking-wider text-left text-black">
-                    {(product.sale * 1000).toLocaleString().replace(/\,/g, ".")}
+                  <h1 className="mr-2 text-lg font-semibold leading-8 tracking-wider text-left text-red-500">
+                    {(Math.round(product.price - product.sale) * 1000)
+                      .toLocaleString()
+                      .replace(/\,/g, ".")}
                     ₫
                   </h1>
                 )}
@@ -197,7 +200,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   className={`${
                     product.sale > 0
                       ? "text-gray-300 line-through text-base"
-                      : "text-black text-lg"
+                      : "text-red-500 text-lg"
                   } font-semibold leading-8 tracking-wider text-left`}
                 >
                   {(product.price * 1000).toLocaleString().replace(/\,/g, ".")}₫
@@ -245,25 +248,19 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   </a>
                 </div>
               </div>
-              <div className="mb-5 flex flex-col">
-                <span className="text-sm tracking-wider font-semibold leading-5">
-                  Mô tả
-                </span>
-                <span className="text-sm text-gray-800 font-normal tracking-wide leading-6">
-                  {product.desc}
-                </span>
-              </div>
               <div className="flex flex-col">
                 <span className="text-sm tracking-wider font-semibold leading-5 ">
                   Chi tiết sản phẩm
                 </span>
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
                   <span className="text-2xl mr-1">•</span> Tình trạng:&nbsp;
+                  <span className="font-semibold">(Bold)</span>&nbsp;
                   {product.instock ? "còn hàng" : "hết hàng"}
                 </span>
 
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
                   <span className="text-2xl mr-1">•</span> Loại sản phẩm:&nbsp;
+                  <span className="font-semibold">(Bold)</span>&nbsp;
                   {product.category.name}
                 </span>
 
@@ -305,8 +302,18 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             </div>
           </div>
         </div>
-        <div className="mt-10 pl-4">
-          <h1 className="font-medium text-xl pl-2 mb-5">Sản phẩm liên quan</h1>
+        <div className="flex flex-col sm:flex-row max-w-full justify-start mx-7 mt-4">
+          <div className="flex flex-col">
+            <span className="text-sm tracking-wider font-semibold leading-5">
+              Mô tả
+            </span>
+            <div className="text-sm text-gray-800 font-normal tracking-wide leading-6 mt-2">
+              {parse(product.desc)}
+            </div>
+          </div>
+        </div>
+        <div className="mt-10 ml-7">
+          <h1 className="font-medium text-xl mb-5">Sản phẩm liên quan</h1>
           <ListProductDetail data={filterRelated} />
         </div>
       </div>

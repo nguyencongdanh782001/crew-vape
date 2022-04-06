@@ -70,7 +70,10 @@ const ProductDetailItem = ({ data }: PropsType) => {
           <div className="flex justify-center items-center">
             {data?.sale > 0 && (
               <span className="mr-2 text-black text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
-                {(data?.sale * 1000).toLocaleString().replace(/\,/g, ".")}₫
+                {(Math.round(data?.price - data?.sale) * 1000)
+                  .toLocaleString()
+                  .replace(/\,/g, ".")}
+                ₫
               </span>
             )}
             <span

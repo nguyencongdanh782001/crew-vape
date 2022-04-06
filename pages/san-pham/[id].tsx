@@ -267,21 +267,21 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 </span>
 
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1 font-bold">•</span> Loại sản
-                  phẩm:&nbsp;
+                  <span className="text-2xl mr-1 font-bold">•</span>
+                  Loại sản phẩm:&nbsp;
                   <span className="font-bold">{product.category.name}</span>
                 </span>
 
                 <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                  <span className="text-2xl mr-1 font-bold">•</span> Thương
-                  hiệu:&nbsp;
+                  <span className="text-2xl mr-1 font-bold">•</span>
+                  Thương hiệu:&nbsp;
                   <span className="font-bold"> {product.brand.name}</span>
                 </span>
 
                 {product.category.slug === "disposable-pod" && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1 font-bold">•</span> Số
-                    hơi(puffs):&nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span>
+                    Số hơi(puffs):&nbsp;
                     <span className="font-bold">{product.puffs}</span>
                   </span>
                 )}
@@ -289,16 +289,16 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                   product.category.slug === "saltnic" ||
                   product.category.slug === "disposable-pod") && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1 font-bold">•</span> Liều
-                    lượng nicotine: &nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span>
+                    Liều lượng nicotine:&nbsp;
                     <span className="font-bold">{product.nicotine}</span>
                   </span>
                 )}
                 {(product.category.slug === "freebase" ||
                   product.category.slug === "saltnic") && (
                   <span className="text-sm text-gray-800 font-normal tracking-wider leading-7 flex items-center">
-                    <span className="text-2xl mr-1 font-bold">•</span> Dung
-                    tích:&nbsp;
+                    <span className="text-2xl mr-1 font-bold">•</span>
+                    Dung tích:&nbsp;
                     <span className="font-bold">{product.capacity}</span>
                   </span>
                 )}

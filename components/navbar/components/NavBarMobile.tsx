@@ -71,8 +71,8 @@ const NavBarMobile = () => {
               <Image
                 src={TEXT_CREW}
                 alt="Picture of the author"
-                width={80}
-                height={20}
+                width="80px"
+                height="20px"
                 className="cursor-pointer"
               />
             </a>

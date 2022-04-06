@@ -59,8 +59,8 @@ const NavBarPc = () => {
               <Image
                 src={TEXT_CREW}
                 alt="Picture of the author"
-                width={130}
-                height={30}
+                width="130px"
+                height="30px"
               />
             </a>
           </Link>

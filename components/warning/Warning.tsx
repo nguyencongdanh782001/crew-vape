@@ -4,13 +4,13 @@ const Warning = () => {
   const [warning, setWarning] = useState("");
 
   useEffect(() => {
-    setWarning(localStorage.getItem("warning") || "");
+    setWarning(sessionStorage.getItem("warning") || "");
   }, []);
 
   const handleSubmit = useMemo(
     () => (value: any) => {
       setWarning(value);
-      localStorage.setItem("warning", value);
+      sessionStorage.setItem("warning", value);
     },
     []
   );

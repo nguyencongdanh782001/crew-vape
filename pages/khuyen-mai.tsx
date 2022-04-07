@@ -126,14 +126,14 @@ const KhuyenMai = ({ khuyenMai }: any) => {
           </div>
         </div>
         <ListProductDetail data={listProductFilter} />
-        {khuyenMai.length < 1 && (
+        {khuyenMai.product.length < 1 && (
           <div className="w-full flex justify-center items-center mb-6">
             {/* gap-x-2 */}
             <IoSearchOutline className="text-lg mr-2" />
             <p>Không có sản phẩm</p>
           </div>
         )}
-        {khuyenMai.length > 0 && (
+        {khuyenMai.product.length > 0 && (
           <div className="w-full flex justify-center items-center mt-6">
             <Pagination
               totalPage={khuyenMai.totalPage}

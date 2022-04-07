@@ -7,6 +7,7 @@ const Message = () => {
         href="https://www.facebook.com/messages/t/101771795195686"
         target="_blank"
         rel="noreferrer"
+        aria-label="Message"
         className="p-3 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-full shadow-lg shadow-gray-500"
       >
         <i>

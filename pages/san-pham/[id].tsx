@@ -216,7 +216,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                     Màu:
                   </p>
                 )}
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap" aria-hidden="true">
                   {product.image.map((item: any, index: any) => (
                     <button
                       onClick={() => (nav1 as any).slickGoTo(index)}
@@ -236,11 +236,12 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 </div>
               </div>
               <div className="flex mt-5 mb-6">
-                <div className="bg-black py-3 px-24 rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear">
+                <div className="bg-black w-full sm:w-[70%] py-4 flex justify-center items-center rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear">
                   <a
                     href="https://www.facebook.com/messages/t/100006177676042"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="Message"
                     className="uppercase font-semibold text-xs text-white tracking-widest group-hover:text-black"
                   >
                     Mua ngay

@@ -113,6 +113,7 @@ const BoxTank = ({ boxTank }: any) => {
               Sắp Xếp:
             </label>
             <Select
+              aria-labelledby="Select"
               options={options}
               onChange={handleChange}
               className="w-32 text-xs sm:text-sm sm:w-36"

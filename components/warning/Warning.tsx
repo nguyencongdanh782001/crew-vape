@@ -50,6 +50,7 @@ const Warning = () => {
             href="https://nganhangphapluat.thukyluat.vn/tu-van-phap-luat/trach-nhiem-hinh-su/18-tuoi-co-duoc-hut-thuoc-la-138188"
             target="_blank"
             rel="noreferrer"
+            aria-label="Warning"
             className="border border-white py-2 px-4 text-lg text-white font-semibold text-center cursor-pointer hover:bg-white hover:text-black transition-all duration-100 ease-linear rounded-md"
           >
             Dưới 18

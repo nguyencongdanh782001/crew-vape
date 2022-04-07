@@ -5,8 +5,17 @@ import Category from "../components/category/Category";
 import Layout from "../components/layout/LayoutHome";
 import ListProduct from "../components/listproduct/ListProduct";
 import SliderBanner from "../components/slider/SliderBanner";
+import Saltnic from "./san-pham/saltnic";
 
-const Home: NextPage = ({ jsons }: any) => {
+const Home: NextPage = ({
+  banner,
+  freebase,
+  Saltnic,
+  disposablePod,
+  podMod,
+  boxTank,
+  phuKien,
+}: any) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -22,30 +31,30 @@ const Home: NextPage = ({ jsons }: any) => {
         />
       </Head>
       <div className="pb-10 pt-[58px] lg:pt-[8px] ">
-        <SliderBanner banner={jsons[0]} />
+        <SliderBanner banner={banner} />
         <Category />
         <ListProduct
           heading="freebase"
-          data={jsons[1].product}
+          data={freebase.product}
           link="freebase"
         />
-        <ListProduct heading="saltnic" data={jsons[2].product} link="saltnic" />
+        <ListProduct heading="saltnic" data={Saltnic.product} link="saltnic" />
         <ListProduct
           heading="disposable pod"
-          data={jsons[3].product}
+          data={disposablePod.product}
           link="disposable-pod"
         />
-        <ListProduct heading="pod mod" data={jsons[4].product} link="pod-mod" />
+        <ListProduct heading="pod mod" data={podMod.product} link="pod-mod" />
 
         <ListProduct
           heading="box tank"
-          data={jsons[5].product}
+          data={boxTank.product}
           link="box-tank"
         />
 
         <ListProduct
           heading="phụ kiện"
-          data={jsons[6].product}
+          data={phuKien.product}
           link="phu-kien"
         />
       </div>
@@ -86,7 +95,13 @@ export async function getServerSideProps(context: any) {
 
   return {
     props: {
-      jsons,
+      banner: jsons[0],
+      freebase: jsons[1],
+      Saltnic: jsons[2],
+      disposablePod: jsons[3],
+      podMod: jsons[4],
+      boxTank: jsons[5],
+      phuKien: jsons[6],
     },
   };
 }

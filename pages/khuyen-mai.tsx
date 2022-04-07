@@ -146,10 +146,10 @@ const KhuyenMai = ({ khuyenMai }: any) => {
 export default KhuyenMai;
 
 export async function getServerSideProps(context: any) {
-  const resBoxTank = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=box-tank`
+  const resKhuyenmai = await fetch(
+    `https://vape-store.herokuapp.com/api/product/sale?page=${context.query.page}&&limit=10`
   );
-  const khuyenMai: any = [];
+  const khuyenMai = await resKhuyenmai.json();
 
   return {
     props: {

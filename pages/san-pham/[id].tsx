@@ -51,14 +51,11 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [filterRelated, setFilterRelated] = useState<any>([]);
-  const [imageSelect, setImageSelect] = useState({});
   const router = useRouter();
-
-  const sliderRef = useRef<any>();
 
   useEffect(() => {
     setFilterRelated(
-      relatedProduct?.product.filter(
+      relatedProduct?.relateProduct.filter(
         (item: any) => item._id !== router.query.id
       )
     );
@@ -331,20 +328,20 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
 export default ChiTietSanPham;
 
 export async function getServerSideProps(context: any) {
-  const resProduct = await fetch(
-    `https://vape-store.herokuapp.com/api/product/find/${context.params.id}`
-  );
-  const product = await resProduct.json();
-
-  const resRelatedProduct = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=1&&limit=4&&cat=${product.category.slug}`
-  );
-  const relatedProduct = await resRelatedProduct.json();
+  const response = await Promise.all([
+    fetch(
+      `https://vape-store.herokuapp.com/api/product/find/${context.params.id}`
+    ),
+    fetch(
+      `https://vape-store.herokuapp.com/api/product/relate/${context.params.id}?page=1&&limit=4`
+    ),
+  ]);
+  const json = await Promise.all(response.map((res) => res.json()));
 
   return {
     props: {
-      product,
-      relatedProduct,
+      product: json[0],
+      relatedProduct: json[1],
     }, // will be passed to the page component as props
   };
 }

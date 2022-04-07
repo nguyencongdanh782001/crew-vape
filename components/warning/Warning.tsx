@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const Warning = () => {
   const [warning, setWarning] = useState("");
@@ -7,10 +7,13 @@ const Warning = () => {
     setWarning(localStorage.getItem("warning") || "");
   }, []);
 
-  const handleSubmit = (value: any) => {
-    setWarning(value);
-    localStorage.setItem("warning", value);
-  };
+  const handleSubmit = useMemo(
+    () => (value: any) => {
+      setWarning(value);
+      localStorage.setItem("warning", value);
+    },
+    []
+  );
 
   return (
     <div
@@ -39,12 +42,14 @@ const Warning = () => {
           >
             Trên 18+
           </span>
-          <span
-            onClick={() => handleSubmit("dưới 18")}
+          <a
+            href="https://nganhangphapluat.thukyluat.vn/tu-van-phap-luat/trach-nhiem-hinh-su/18-tuoi-co-duoc-hut-thuoc-la-138188"
+            target="_blank"
+            rel="noreferrer"
             className="border border-white py-2 px-4 text-lg text-white font-semibold text-center cursor-pointer hover:bg-white hover:text-black transition-all duration-100 ease-linear rounded-md"
           >
             Dưới 18
-          </span>
+          </a>
         </div>
       </div>
     </div>

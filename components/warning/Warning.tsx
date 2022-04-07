@@ -1,10 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 const Warning = () => {
-  const [warning, setWarning] = useState("");
+  const [warning, setWarning] = useState("trên 18");
 
   useEffect(() => {
-    setWarning(sessionStorage.getItem("warning") || "");
+    if (sessionStorage.getItem("warning")) {
+      setWarning(sessionStorage.getItem("warning") || "");
+    } else {
+      setWarning("");
+    }
   }, []);
 
   const handleSubmit = useMemo(

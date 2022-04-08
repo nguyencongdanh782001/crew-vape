@@ -7,7 +7,7 @@ import Warning from "../warning/Warning";
 
 const LayoutProduct = ({ children, scrollNavBar }: any) => {
   return (
-    <div className="flex justify-end w-full items-center bg-white">
+    <div className="flex justify-end w-full items-center bg-gray-100">
       <Warning />
       <Message />
       <div className="flex justify-center w-screen xl:w-[90%]">

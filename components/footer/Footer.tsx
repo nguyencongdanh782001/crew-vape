@@ -58,15 +58,15 @@ const Footer = () => {
           </h3>
           <div className="w-11 border-[1.5px] border-red-400 bg-red-400 mt-1 mb-4"></div>
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTheCrewStation&tabs=timeline&width=250&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=270725018569589"
-            width="250"
-            height="70"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTheCrewStation&tabs&width=280&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=270725018569589"
+            width="280"
+            height="130"
             style={{ border: "none", overflow: "hidden" }}
             scrolling="no"
             frameBorder="0"
             allowFullScreen
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            title="thecrewvape"
+            title="crewvape"
           ></iframe>
         </div>
       </div>

@@ -1,5 +1,6 @@
 {
   "name": "web-vape",
+  "homepage": "https://crewvape.net/",
   "version": "0.1.0",
   "private": true,
   "scripts": {

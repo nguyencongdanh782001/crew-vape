@@ -64,7 +64,7 @@ const Home: NextPage = ({
 
 export default Home;
 
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
   const responses = await Promise.all([
     fetch("https://vape-store.herokuapp.com/api/banner", {
       method: "GET",
@@ -103,5 +103,6 @@ export async function getServerSideProps(context: any) {
       boxTank: jsons[5],
       phuKien: jsons[6],
     },
+    revalidate: 60,
   };
 }

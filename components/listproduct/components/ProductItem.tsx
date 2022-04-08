@@ -32,7 +32,7 @@ interface PropsType {
 const ProductItem = ({ data }: PropsType) => {
   return (
     <Link href={`/san-pham/${data._id}`} passHref>
-      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px]">
+      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden">
         <div className="overflow-hidden relative">
           <img
             src={data?.image[0].image}
@@ -65,7 +65,7 @@ const ProductItem = ({ data }: PropsType) => {
           >
             {data?.name}
           </h5>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mb-2">
             {data?.sale > 0 && (
               <span className="mr-2 text-red-500 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] overflow-hidden">
                 {(Math.round(data?.price - data?.sale) * 1000)

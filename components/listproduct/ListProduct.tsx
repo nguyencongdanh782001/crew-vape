@@ -64,7 +64,7 @@ const ListProduct = ({ heading, data, link }: PropsType) => {
     <section className="w-full flex items-center justify-center mt-16 ">
       <div className="max-w-7xl flex flex-col items-center justify-center">
         <div className="mb-7 relative flex items-center justify-center w-[300px] sm:w-[500px] lg:w-[650px]">
-          <h2 className="uppercase text-center font-semibold text-xl sm:text-2xl px-3 bg-gray-200 lg:text-3xl tracking-wider leading-10 text-gray-800 z-10">
+          <h2 className="uppercase text-center font-semibold text-xl sm:text-2xl px-3 bg-white lg:text-3xl tracking-wider leading-10 text-gray-800 z-10">
             {heading}
           </h2>
           <div className="border-[0.5px] left-0 right-0 absolute h-[3px] bg-gray-800"></div>

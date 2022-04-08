@@ -32,12 +32,12 @@ interface PropsType {
 const ProductItem = ({ data }: PropsType) => {
   return (
     <Link href={`/san-pham/${data._id}`} passHref>
-      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden">
+      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden shadow-lg shadow-gray-300 drop-shadow-md">
         <div className="overflow-hidden relative">
           <img
             src={data?.image[0].image}
             alt=""
-            className="w-[120px] h-[100px] lg:w-[250px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
+            className="w-[135px] h-[100px] lg:w-[250px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
           />
           <i className="w-9 h-9 bg-black rounded-full flex justify-center items-center absolute opacity-0 -bottom-1 left-[45%] group-hover:-translate-y-5 group-hover:opacity-100 transition-all duration-500">
             <FaCartPlus className="text-white text-base" />

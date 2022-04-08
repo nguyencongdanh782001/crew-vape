@@ -103,7 +103,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
       </div>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] bg-white py-5 rounded h-full">
         <div className="flex flex-col sm:flex-row max-w-full justify-center md:mx-5">
-          <div className="w-screen px-5 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem] h-full md:pr-7">
+          <div className="w-screen px-5 sm:px-0 sm:min-w-[20rem] sm:max-w-[20rem] md:min-w-[23rem] md:max-w-[23rem] lg:min-w-[24rem] lg:max-w-[24rem] 2xl:min-w-[27rem] 2xl:max-w-[27rem] h-auto md:pr-7">
             {product.image.length > 1 ? (
               <div className="h-[29rem] sm:h-[34rem]">
                 <div>
@@ -118,7 +118,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           <img
                             src={item.image}
                             alt=""
-                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain "
+                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-cover "
                           />
                         </Zoom>
                         {item?.instock === false && (
@@ -149,7 +149,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         <img
                           src={item.image}
                           alt=""
-                          className="w-[120px] h-[7rem] object-contain cursor-pointer border border-gray-200"
+                          className="w-[120px] h-[7rem] object-cover cursor-pointer border border-gray-200"
                         />
                       </div>
                     ))}
@@ -157,14 +157,17 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 </div>
               </div>
             ) : (
-              <div className="h-[27rem]">
+              <div className="flex justify-center">
                 {product.image.map((item: any, index: any) => (
-                  <div key={index} className="relative">
+                  <div
+                    key={index}
+                    className="relative 2xl:w-[90%] md:w-[27rem] sm:h-[25rem] h-[20rem]"
+                  >
                     <Zoom>
                       <img
                         src={item.image}
                         alt=""
-                        className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-contain"
+                        className="md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-cover"
                       />
                     </Zoom>
                     {item?.instock === false && (
@@ -317,8 +320,8 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
             </div>
           </div>
         </div>
-        <div className="mt-10 ml-7">
-          <h1 className="font-medium text-xl mb-5">Sản phẩm liên quan</h1>
+        <div className="mt-10">
+          <h1 className="font-medium ml-7 text-xl mb-5">Sản phẩm liên quan</h1>
           <ListProductDetail data={filterRelated} />
         </div>
       </div>

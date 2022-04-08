@@ -7,7 +7,7 @@ import Warning from "../warning/Warning";
 
 const Layout = ({ children, scrollNavBar }: any) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-200">
       <Warning />
       <Message />
       <NavBar scrollNavBar={scrollNavBar} />

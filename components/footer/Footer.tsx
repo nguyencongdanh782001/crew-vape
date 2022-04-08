@@ -66,6 +66,7 @@ const Footer = () => {
             frameBorder="0"
             allowFullScreen
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="thecrewvape"
           ></iframe>
         </div>
       </div>

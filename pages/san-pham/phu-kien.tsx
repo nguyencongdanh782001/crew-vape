@@ -78,7 +78,7 @@ const PhuKien = ({ phuKien }: any) => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-  console.log(phuKien.totalPage);
+
   return (
     <LayoutProduct>
       <Head>

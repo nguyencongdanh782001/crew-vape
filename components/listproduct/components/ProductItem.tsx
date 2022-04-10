@@ -60,10 +60,12 @@ const ProductItem = ({ data }: PropsType) => {
         </div>
         <div className="w-full flex flex-col justify-center items-center mt-3">
           <h5
-            className="text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] max-h-[70px] line-clamp-2 overflow-hidden"
+            className="text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] line-clamp-2 overflow-hidden"
             style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
           >
-            {data?.name}
+            {data?.name.length > 31
+              ? `${data?.name.substring(0, 31)}...`
+              : data?.name}
           </h5>
           <div className="flex justify-center items-center mb-2">
             {data?.sale > 0 && (

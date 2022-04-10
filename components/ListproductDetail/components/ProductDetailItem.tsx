@@ -62,7 +62,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
         </div>
         <div className="w-full flex flex-col justify-center items-center pt-3 pb-2 bg-white">
           <h5
-            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px] max-h-[20px] line-clamp-2 overflow-hidden"
+            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px] max-h-[55px] line-clamp-2 overflow-hidden"
             style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
           >
             {data?.name}

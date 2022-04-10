@@ -17,7 +17,7 @@ const NavBarPc = () => {
   useDebounce(searchValue, 300, async () => {
     try {
       const res = await fetch(
-        `https://vape-store.herokuapp.com/api/product/search/all?page=1&&limit=6&&searchQuery=${searchValue}`
+        `https://vape-store.herokuapp.com/api/product/search/all?page=1&&limit=4&&searchQuery=${searchValue}`
       );
       const data = await res.json();
       if (!res) {

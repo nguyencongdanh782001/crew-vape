@@ -151,7 +151,7 @@ export default FreeBase;
 
 export async function getServerSideProps(context: any) {
   const resFreebase = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=freebase`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=freebase`
   );
   const freebase = await resFreebase.json();
 

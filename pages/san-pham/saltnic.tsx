@@ -150,7 +150,7 @@ export default Saltnic;
 
 export async function getServerSideProps(context: any) {
   const resSaltnic = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=saltnic`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=saltnic`
   );
   const saltnic = await resSaltnic.json();
 

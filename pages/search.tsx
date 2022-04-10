@@ -155,7 +155,7 @@ export default Search;
 
 export async function getServerSideProps(context: any) {
   const resSearch = await fetch(
-    `https://vape-store.herokuapp.com/api/product/search/all?page=${context.query.page}&&limit=6&&searchQuery=${context.query.search}`
+    `https://vape-store.herokuapp.com/api/product/search/all?page=${context.query.page}&&limit=12&&searchQuery=${context.query.search}`
   );
   const search = await resSearch.json();
 

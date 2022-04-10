@@ -150,7 +150,7 @@ export default BoxTank;
 
 export async function getServerSideProps(context: any) {
   const resBoxTank = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=box-tank`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=box-tank`
   );
   const boxTank = await resBoxTank.json();
 

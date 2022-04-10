@@ -151,7 +151,7 @@ export default KhuyenMai;
 
 export async function getServerSideProps(context: any) {
   const resKhuyenmai = await fetch(
-    `https://vape-store.herokuapp.com/api/product/sale?page=${context.query.page}&&limit=10`
+    `https://vape-store.herokuapp.com/api/product/sale?page=${context.query.page}&&limit=12`
   );
   const khuyenMai = await resKhuyenmai.json();
 

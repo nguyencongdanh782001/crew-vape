@@ -155,7 +155,7 @@ export default DisposablePod;
 
 export async function getServerSideProps(context: any) {
   const resDisposablePod = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=disposable-pod`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=disposable-pod`
   );
   const disposablePod = await resDisposablePod.json();
 

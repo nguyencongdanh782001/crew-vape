@@ -150,7 +150,7 @@ export default PodMod;
 
 export async function getServerSideProps(context: any) {
   const resPodMod = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=pod-mod`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=pod-mod`
   );
   const podMod = await resPodMod.json();
 

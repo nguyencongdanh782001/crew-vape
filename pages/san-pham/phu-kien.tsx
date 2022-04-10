@@ -152,7 +152,7 @@ export default PhuKien;
 
 export async function getServerSideProps(context: any) {
   const resPhuKien = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=10&&cat=phu-kien`
+    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=phu-kien`
   );
   const phuKien = await resPhuKien.json();
 

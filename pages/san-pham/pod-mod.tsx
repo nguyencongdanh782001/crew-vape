@@ -14,6 +14,10 @@ const PodMod = ({ podMod }: any) => {
   const [filter, setFilter] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(podMod.product);
+  }, [podMod.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

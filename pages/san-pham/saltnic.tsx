@@ -14,6 +14,10 @@ const Saltnic = ({ saltnic }: any) => {
   const [filter, setFilter] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(saltnic.product);
+  }, [saltnic.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

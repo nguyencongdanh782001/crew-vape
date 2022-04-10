@@ -16,6 +16,10 @@ const DisposablePod = ({ disposablePod }: any) => {
   const [filter, setFilter] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(disposablePod.product);
+  }, [disposablePod.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

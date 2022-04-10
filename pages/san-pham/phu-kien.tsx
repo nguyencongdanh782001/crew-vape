@@ -16,6 +16,10 @@ const PhuKien = ({ phuKien }: any) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(phuKien.product);
+  }, [phuKien.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

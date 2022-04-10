@@ -16,6 +16,10 @@ const Search = ({ search }: any) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(search.product);
+  }, [search.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

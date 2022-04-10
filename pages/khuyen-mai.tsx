@@ -16,6 +16,10 @@ const KhuyenMai = ({ khuyenMai }: any) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(khuyenMai.product);
+  }, [khuyenMai.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

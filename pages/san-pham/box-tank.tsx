@@ -15,6 +15,10 @@ const BoxTank = ({ boxTank }: any) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    setListProductFilter(boxTank.product);
+  }, [boxTank.product]);
+
   const handleChangePage = useCallback(
     (value: any) => {
       setPage(value.selected + 1);

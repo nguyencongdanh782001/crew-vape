@@ -39,7 +39,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
           <img
             src={data?.image[0].image}
             alt=""
-            className="w-screen h-[170px]  lg:h-[190px] object-cover group-hover:scale-110 transition-all duration-200"
+            className="w-screen h-[170px] lg:h-[190px] object-cover group-hover:scale-110 transition-all duration-200"
           />
           <i className="w-9 h-9 bg-black rounded-full flex justify-center items-center absolute opacity-0 -bottom-1 left-[45%] group-hover:-translate-y-5 group-hover:opacity-100 transition-all duration-500">
             <FaCartPlus className="text-white text-base" />
@@ -62,11 +62,11 @@ const ProductDetailItem = ({ data }: PropsType) => {
         </div>
         <div className="w-full flex flex-col justify-center items-center pt-3 pb-2 bg-white">
           <h5
-            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px] line-clamp-2 overflow-hidden"
+            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 min-h-[60px] max-w-[120px] lg:max-w-[160px] line-clamp-2 overflow-hidden"
             style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
           >
-            {data?.name.length > 25
-              ? `${data?.name.substring(0, 25)}...`
+            {data?.name.length > 23
+              ? `${data?.name.substring(0, 23)}...`
               : data?.name}
           </h5>
           <div className="flex justify-center items-center">

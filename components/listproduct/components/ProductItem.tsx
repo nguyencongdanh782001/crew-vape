@@ -32,12 +32,12 @@ interface PropsType {
 const ProductItem = ({ data }: PropsType) => {
   return (
     <Link href={`/san-pham/${data._id}`} passHref>
-      <div className="flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden shadow-lg shadow-gray-300 drop-shadow-md">
+      <div className="w-[40%] sm:w-[20%] flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden shadow-lg shadow-gray-300 drop-shadow-md">
         <div className="overflow-hidden relative">
           <img
             src={data?.image[0].image}
             alt=""
-            className="w-[135px] h-[100px] lg:w-[250px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
+            className="w-screen h-[100px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
           />
           <i className="w-9 h-9 bg-black rounded-full flex justify-center items-center absolute opacity-0 -bottom-1 left-[45%] group-hover:-translate-y-5 group-hover:opacity-100 transition-all duration-500">
             <FaCartPlus className="text-white text-base" />
@@ -60,7 +60,7 @@ const ProductItem = ({ data }: PropsType) => {
         </div>
         <div className="w-full flex flex-col justify-center items-center mt-3">
           <h5
-            className="text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[225px] line-clamp-2 overflow-hidden"
+            className="text-center uppercase font-semibold text-sm tracking-wide leading-7 min-h-[84px] lg:min-h-[60px] max-w-[120px] lg:max-w-[225px] line-clamp-2 overflow-hidden"
             style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
           >
             {data?.name.length > 31

@@ -6,6 +6,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
+import Loading from "../../components/loading/Loading";
 import Pagination from "../../components/pagination/Pagination";
 
 const FreeBase = ({ freebase }: any) => {

@@ -47,7 +47,7 @@ const Warning = () => {
             Trên 18+
           </span>
           <a
-            href="https://nganhangphapluat.thukyluat.vn/tu-van-phap-luat/trach-nhiem-hinh-su/18-tuoi-co-duoc-hut-thuoc-la-138188"
+            href="about:blank"
             target="_blank"
             rel="noreferrer"
             aria-label="Warning"

@@ -70,3 +70,11 @@ body {
 display: flex !important;
 /* gap: 12px; */
 }
+
+#nprogress .bar {
+  background: rgb(251 113 133) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px rgb(225 29 72), 0 0 5px rgb(225 29 72);
+}

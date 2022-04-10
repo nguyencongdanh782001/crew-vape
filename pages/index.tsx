@@ -5,7 +5,6 @@ import Category from "../components/category/Category";
 import Layout from "../components/layout/LayoutHome";
 import ListProduct from "../components/listproduct/ListProduct";
 import SliderBanner from "../components/slider/SliderBanner";
-import Saltnic from "./san-pham/saltnic";
 
 const Home: NextPage = ({
   banner,

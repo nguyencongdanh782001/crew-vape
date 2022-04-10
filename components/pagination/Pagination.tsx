@@ -39,4 +39,4 @@ const Pagination = ({ totalPage, activePage, handleChange }: propsType) => {
   );
 };
 
-export default Pagination;
+export default memo(Pagination);

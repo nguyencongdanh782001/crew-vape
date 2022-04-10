@@ -6,7 +6,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
-import Loading from "../../components/loading/Loading";
 import Pagination from "../../components/pagination/Pagination";
 
 const FreeBase = ({ freebase }: any) => {
@@ -14,6 +13,10 @@ const FreeBase = ({ freebase }: any) => {
   const [listProductFilter, setListProductFilter] = useState(freebase.product);
   const [filter, setFilter] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    setListProductFilter(freebase.product);
+  }, [freebase.product]);
 
   const handleChangePage = useCallback(
     (value: any) => {
@@ -26,40 +29,42 @@ const FreeBase = ({ freebase }: any) => {
   );
 
   useEffect(() => {
-    if (filter === "az") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => a.name.localeCompare(b.name))
-      );
-    } else if (filter === "za") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => b.name.localeCompare(a.name))
-      );
-    } else if (filter === "increase") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => a.price - b.price)
-      );
-    } else if (filter === "decrease") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
-    } else if (filter === "newest") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => {
-          return (
-            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
-          );
-        })
-      );
-    } else if (filter === "oldest") {
-      setListProductFilter((prev: any) =>
-        [...prev].sort((a, b) => {
-          return (
-            (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
-          );
-        })
-      );
+    if (listProductFilter !== []) {
+      if (filter === "az") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => a.name.localeCompare(b.name))
+        );
+      } else if (filter === "za") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => b.name.localeCompare(a.name))
+        );
+      } else if (filter === "increase") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => a.price - b.price)
+        );
+      } else if (filter === "decrease") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => b.price - a.price)
+        );
+      } else if (filter === "newest") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => {
+            return (
+              (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
+            );
+          })
+        );
+      } else if (filter === "oldest") {
+        setListProductFilter((prev: any) =>
+          [...prev].sort((a, b) => {
+            return (
+              (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
+            );
+          })
+        );
+      }
     }
-  }, [filter]);
+  }, [filter, listProductFilter]);
 
   const options = [
     { value: "az", label: "A - Z" },
@@ -77,7 +82,7 @@ const FreeBase = ({ freebase }: any) => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-
+  console.log(freebase);
   return (
     <LayoutProduct>
       <Head>

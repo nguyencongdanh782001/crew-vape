@@ -242,17 +242,17 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                 </div>
               </div>
               <div className="flex mt-5 mb-6">
-                <div className="bg-black w-full sm:w-[70%] py-4 flex justify-center items-center rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear">
-                  <a
-                    href="https://www.facebook.com/messages/t/100006177676042"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Message"
-                    className="uppercase font-semibold text-xs text-white tracking-widest group-hover:text-black"
-                  >
+                <a
+                  href="https://www.facebook.com/messages/t/100006177676042"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Message"
+                  className="bg-black w-full sm:w-[70%] py-4 flex justify-center items-center rounded-sm cursor-pointer group hover:bg-white border border-black transition-all origin-left duration-150 ease-linear"
+                >
+                  <span className="uppercase font-semibold text-xs text-white tracking-widest group-hover:text-black">
                     Mua ngay
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
               <div className="flex flex-col">
                 <span className="text-sm tracking-wider font-semibold leading-5 ">

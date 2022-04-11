@@ -324,7 +324,9 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
           </div>
         </div>
         <div className="mt-10">
-          <h1 className="font-medium ml-7 text-xl mb-5">Sản phẩm liên quan</h1>
+          <h1 className="font-semibold ml-7 text-xl mb-5">
+            Sản phẩm liên quan
+          </h1>
           <ListProductDetail data={filterRelated} />
         </div>
       </div>

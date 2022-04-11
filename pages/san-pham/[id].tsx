@@ -340,7 +340,7 @@ export async function getServerSideProps(context: any) {
       `https://vape-store.herokuapp.com/api/product/find/${context.params.id}`
     ),
     fetch(
-      `https://vape-store.herokuapp.com/api/product/relate/${context.params.id}?page=1&&limit=4`
+      `https://vape-store.herokuapp.com/api/product/relate/${context.params.id}?limit=4`
     ),
   ]);
   const json = await Promise.all(response.map((res) => res.json()));

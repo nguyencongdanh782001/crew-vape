@@ -37,6 +37,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
       <div className="w-[47%] sm:w-[23.5%] lg:w-[23%] mx-[5px] my-[5px] flex flex-col justify-center items-center cursor-pointer group border border-solid border-gray-300 rounded overflow-hidden bg-white">
         <div className="overflow-hidden relative">
           <img
+            loading="lazy"
             src={data?.image[0].image}
             alt=""
             className="w-screen h-[170px] lg:h-[190px] object-cover group-hover:scale-110 transition-all duration-200"
@@ -60,14 +61,9 @@ const ProductDetailItem = ({ data }: PropsType) => {
             </div>
           )}
         </div>
-        <div className="w-full flex flex-col justify-center items-center pt-3 pb-2 bg-white">
-          <h5
-            className="mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 min-h-[60px] max-w-[120px] lg:max-w-[160px] line-clamp-2 overflow-hidden"
-            style={{ textOverflow: "ellipsis", boxOrient: "vertical" }}
-          >
-            {data?.name.length > 23
-              ? `${data?.name.substring(0, 23)}...`
-              : data?.name}
+        <div className="w-full px-2 sm:px-3 flex flex-col justify-center items-center pt-3 pb-2 bg-white">
+          <h5 className="name-product-item-limit mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px]">
+            {data?.name}
           </h5>
           <div className="flex justify-center items-center">
             {data?.sale > 0 && (

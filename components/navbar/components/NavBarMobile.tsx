@@ -74,6 +74,7 @@ const NavBarMobile = () => {
                 width="80px"
                 height="20px"
                 className="cursor-pointer"
+                loading="lazy"
               />
             </a>
           </Link>

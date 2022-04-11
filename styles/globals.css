@@ -78,3 +78,10 @@ display: flex !important;
 #nprogress .peg {
   box-shadow: 0 0 10px rgb(225 29 72), 0 0 5px rgb(225 29 72);
 }
+
+.name-product-item-limit{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}

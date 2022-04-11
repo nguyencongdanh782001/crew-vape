@@ -40,6 +40,7 @@ const Category = () => {
             >
               <div className="w-[170px] sm:w-[300px] md:w-[230px] lg:w-[350px] h-[110px] sm:h-[200px] md:h-[150px] lg:h-[200px]">
                 <img
+                  loading="lazy"
                   src={`${item?.image}`}
                   alt={item?.title}
                   className="group-hover:scale-105 h-full w-full rounded-lg object-cover transition-all duration-200 ease-linear"

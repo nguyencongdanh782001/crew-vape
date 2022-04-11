@@ -118,7 +118,8 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           <img
                             src={item.image}
                             alt=""
-                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-cover "
+                            className=" md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-cover"
+                            loading="lazy"
                           />
                         </Zoom>
                         {item?.instock === false && (
@@ -150,6 +151,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                           src={item.image}
                           alt=""
                           className="w-[120px] h-[7rem] object-cover cursor-pointer border border-gray-200"
+                          loading="lazy"
                         />
                       </div>
                     ))}
@@ -168,6 +170,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
                         src={item.image}
                         alt=""
                         className="md:w-[27rem] sm:h-[25rem] w-screen h-[20rem] object-cover"
+                        loading="lazy"
                       />
                     </Zoom>
                     {item?.instock === false && (

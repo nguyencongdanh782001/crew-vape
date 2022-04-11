@@ -61,6 +61,7 @@ const NavBarPc = () => {
                 alt="Picture of the author"
                 width="130px"
                 height="30px"
+                loading="lazy"
               />
             </a>
           </Link>

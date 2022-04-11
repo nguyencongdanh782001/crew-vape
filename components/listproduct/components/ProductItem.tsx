@@ -32,13 +32,13 @@ interface PropsType {
 const ProductItem = ({ data }: PropsType) => {
   return (
     <Link href={`/san-pham/${data._id}`} passHref>
-      <div className="w-[40%] sm:w-[20%] flex flex-col justify-center items-center cursor-pointer group mx-[14px] my-[14px] bg-white rounded-md overflow-hidden shadow-lg shadow-gray-300 drop-shadow-md">
-        <div className="overflow-hidden relative">
+      <div className="w-[45%] sm:w-[21%] flex flex-col justify-center items-center cursor-pointer group mx-[8px] my-[8px] sm:mx-[10px] sm:my-[10px] lg:mx-[14px] lg:my-[14px] bg-white rounded-md overflow-hidden shadow-lg shadow-gray-300 drop-shadow-md">
+        <div className="overflow-hidden h-auto relative">
           <img
             loading="lazy"
             src={data?.image[0].image}
             alt=""
-            className="w-screen h-[100px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
+            className="w-screen h-[190px] lg:h-[235px] object-cover group-hover:scale-110 transition-all duration-200"
           />
           <i className="w-9 h-9 bg-black rounded-full flex justify-center items-center absolute opacity-0 -bottom-1 left-[45%] group-hover:-translate-y-5 group-hover:opacity-100 transition-all duration-500">
             <FaCartPlus className="text-white text-base" />
@@ -60,7 +60,7 @@ const ProductItem = ({ data }: PropsType) => {
           )}
         </div>
         <div className="w-full px-2 sm:px-3 flex flex-col justify-center items-center mt-3">
-          <h5 className="name-product-item-limit text-center uppercase font-semibold text-sm tracking-wide leading-7 min-h-[57px] max-w-[120px] lg:max-w-[225px]">
+          <h5 className="name-product-item-limit text-center uppercase font-semibold text-xs lg:text-sm tracking-wide leading-6 lg:leading-7 min-h-[50px] lg:min-h-[57px] max-w-[152px] lg:max-w-[225px]">
             {data?.name}
           </h5>
           <div className="flex justify-center items-center mb-2">

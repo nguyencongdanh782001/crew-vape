@@ -82,7 +82,7 @@ const FreeBase = ({ freebase }: any) => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-  console.log(freebase);
+
   return (
     <LayoutProduct>
       <Head>

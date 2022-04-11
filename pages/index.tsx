@@ -22,11 +22,11 @@ const Home: NextPage = ({
   return (
     <Layout scrollNavBar="scroll">
       <Head>
-        <title>The crew station</title>
+        <title>Crew Vape</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="the crew station là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
+          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
         />
       </Head>
       <div className="pb-10 pt-[58px] lg:pt-[8px] ">

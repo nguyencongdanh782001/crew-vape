@@ -62,7 +62,7 @@ const ProductDetailItem = ({ data }: PropsType) => {
           )}
         </div>
         <div className="w-full px-2 sm:px-3 flex flex-col justify-center items-center pt-3 pb-2 bg-white">
-          <h5 className="name-product-item-limit mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 max-w-[120px] lg:max-w-[160px]">
+          <h5 className="name-product-item-limit mb-1 text-center uppercase font-semibold text-sm tracking-wide leading-7 min-h-[57px] max-w-[120px] lg:max-w-[160px]">
             {data?.name}
           </h5>
           <div className="flex justify-center items-center">

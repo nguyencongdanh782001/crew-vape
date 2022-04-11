@@ -21,6 +21,10 @@ export default function Document() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <meta
+          name="google-site-verification"
+          content="Mm28g-gcth3Crfa5rw_IhmIZFWc7zUXFaJeOrA-AEUI"
+        />
       </Head>
       <body>
         <Main />

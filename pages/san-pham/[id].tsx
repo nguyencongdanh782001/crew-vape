@@ -243,7 +243,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
               </div>
               <div className="flex mt-5 mb-6">
                 <a
-                  href="https://www.facebook.com/messages/t/100006177676042"
+                  href="https://m.me/101771795195686"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Message"

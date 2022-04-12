@@ -4,7 +4,7 @@ const Message = () => {
   return (
     <div className="fixed z-50 bottom-10 right-5 sm:bottom-8 sm:right-8 flex items-center justify-center">
       <a
-        href="https://www.facebook.com/messages/t/101771795195686"
+        href="https://m.me/101771795195686"
         target="_blank"
         rel="noreferrer"
         aria-label="Message"

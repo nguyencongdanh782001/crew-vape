@@ -78,7 +78,7 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
       <Head>
         <title>{product.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content={`${parse(product.desc)}`} />
+        <meta name="description" content={product.desc} />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

@@ -90,7 +90,7 @@ const KhuyenMai = ({ khuyenMai }: any) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="the crew station là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
+          content="the crew station là nơi chuyên cung cấp những sản phẩm khuyến mãi về vape uy tín và chất lượng."
         />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">

@@ -101,7 +101,7 @@ const PodMod = ({ podMod }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/san-pham/pod-mod?page=${page}`}
         />
-        <meta property="og:image" content={`${POD}`} />
+        <meta property="og:image" content={`${POD.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

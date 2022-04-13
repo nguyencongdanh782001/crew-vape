@@ -101,7 +101,7 @@ const Saltnic = ({ saltnic }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/san-pham/saltnic?page=${page}`}
         />
-        <meta property="og:image" content={`${SALTNIC}`} />
+        <meta property="og:image" content={`${SALTNIC.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

@@ -107,7 +107,7 @@ const DisposablePod = ({ disposablePod }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/san-pham/disposable-pod?page=${page}`}
         />
-        <meta property="og:image" content={`${POD1LAN}`} />
+        <meta property="og:image" content={`${POD1LAN.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

@@ -33,7 +33,7 @@ const Home: NextPage = ({
         <meta property="og:title" content="crew vape" />
         <meta property="og:url" content={`https://crewvape.net`} />
         <meta property="og:image:alt" content={`https://crewvape.net`} />
-        <meta property="og:image" content={`${TEXT_LOGO_CREW}`} />
+        <meta property="og:image" content={`${TEXT_LOGO_CREW.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

@@ -107,7 +107,7 @@ const Search = ({ search }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/search?page=${page}&&search=${router.query.search}`}
         />
-        <meta property="og:image" content={`${TEXT_LOGO_CREW}`} />
+        <meta property="og:image" content={`${TEXT_LOGO_CREW.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

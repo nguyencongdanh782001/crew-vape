@@ -103,7 +103,7 @@ const PhuKien = ({ phuKien }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/san-pham/phu-kien?page=${page}`}
         />
-        <meta property="og:image" content={`${PHUKIEN}`} />
+        <meta property="og:image" content={`${PHUKIEN.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

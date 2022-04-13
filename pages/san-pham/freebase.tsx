@@ -103,7 +103,7 @@ const FreeBase = ({ freebase }: any) => {
           property="og:image:alt"
           content={`https://crewvape.net/san-pham/freebase?page=${page}`}
         />
-        <meta property="og:image" content={`${FREEBASE}`} />
+        <meta property="og:image" content={`${FREEBASE.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>

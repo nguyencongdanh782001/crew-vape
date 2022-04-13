@@ -77,8 +77,21 @@ const ChiTietSanPham = ({ product, relatedProduct }: any) => {
     <LayoutProduct>
       <Head>
         <title>{product.name}</title>
+        <meta name="description" content={`${parse(product.desc)}`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content={product.desc} />
+        <meta name="keywords" content={product.name} />
+        <meta property="og:title" content={product.name} />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/san-pham/${product._id}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/san-pham/${product._id}`}
+        />
+        <meta property="og:image" content={`${product.image[0].image}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

@@ -7,6 +7,7 @@ import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
+import { POD1LAN } from "../../public/assets/global-image";
 
 const DisposablePod = ({ disposablePod }: any) => {
   const [page, setPage] = useState<number>(disposablePod.currentPage);
@@ -96,6 +97,19 @@ const DisposablePod = ({ disposablePod }: any) => {
           name="description"
           content="the crew station là nơi chuyên cung cấp những sản phẩm về pod một lần uy tín và chất lượng."
         />
+        <meta name="keywords" content="pod một lần" />
+        <meta property="og:title" content="pod một lần" />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/san-pham/disposable-pod?page=${page}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/san-pham/disposable-pod?page=${page}`}
+        />
+        <meta property="og:image" content={`${POD1LAN}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

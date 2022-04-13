@@ -7,6 +7,7 @@ import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
+import { POD } from "../../public/assets/global-image";
 
 const PodMod = ({ podMod }: any) => {
   const [page, setPage] = useState<number>(podMod.CurrentPage);
@@ -90,6 +91,19 @@ const PodMod = ({ podMod }: any) => {
           name="description"
           content="the crew station là nơi chuyên cung cấp những sản phẩm về pod system uy tín và chất lượng."
         />
+        <meta name="keywords" content="pod system" />
+        <meta property="og:title" content="pod system" />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/san-pham/pod-mod?page=${page}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/san-pham/pod-mod?page=${page}`}
+        />
+        <meta property="og:image" content={`${POD}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

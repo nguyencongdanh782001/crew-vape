@@ -8,6 +8,7 @@ import Select from "react-select";
 import LayoutProduct from "../components/layout/LayoutProduct";
 import ListProductDetail from "../components/ListproductDetail/ListProductDetail";
 import Pagination from "../components/pagination/Pagination";
+import { TEXT_LOGO_CREW } from "../public/assets/global-image";
 
 const Search = ({ search }: any) => {
   const [page, setPage] = useState<number>(search.currentPage);
@@ -96,6 +97,19 @@ const Search = ({ search }: any) => {
           name="description"
           content="the crew station là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
         />
+        <meta name="keywords" content="crew vape tìm kiếm" />
+        <meta property="og:title" content="crew vape tìm kiếm" />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/search?page=${page}&&search=${router.query.search}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/search?page=${page}&&search=${router.query.search}`}
+        />
+        <meta property="og:image" content={`${TEXT_LOGO_CREW}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

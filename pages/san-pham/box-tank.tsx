@@ -7,6 +7,7 @@ import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
+import { BOXTANK } from "../../public/assets/global-image";
 
 const BoxTank = ({ boxTank }: any) => {
   const [page, setPage] = useState<number>(boxTank.currentPage);
@@ -86,11 +87,24 @@ const BoxTank = ({ boxTank }: any) => {
     <LayoutProduct>
       <Head>
         <title>Box tank</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
           content="the crew station là nơi chuyên cung cấp những sản phẩm về box tank uy tín và chất lượng."
         />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="keywords" content="box tank" />
+        <meta property="og:title" content="box tank" />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
+        />
+        <meta property="og:image" content={`${BOXTANK}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

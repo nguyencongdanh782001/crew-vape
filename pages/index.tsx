@@ -5,6 +5,7 @@ import Category from "../components/category/Category";
 import Layout from "../components/layout/LayoutHome";
 import ListProduct from "../components/listproduct/ListProduct";
 import SliderBanner from "../components/slider/SliderBanner";
+import { TEXT_LOGO_CREW } from "../public/assets/global-image";
 
 const Home: NextPage = ({
   banner,
@@ -28,6 +29,13 @@ const Home: NextPage = ({
           name="description"
           content="Crew Vape là nơi chuyên cung cấp những sản phẩm về vape uy tín và chất lượng."
         />
+        <meta name="keywords" content="crew vape" />
+        <meta property="og:title" content="crew vape" />
+        <meta property="og:url" content={`https://crewvape.net`} />
+        <meta property="og:image:alt" content={`https://crewvape.net`} />
+        <meta property="og:image" content={`${TEXT_LOGO_CREW}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="pb-10 pt-[58px] lg:pt-[8px] ">
         <SliderBanner banner={banner} />

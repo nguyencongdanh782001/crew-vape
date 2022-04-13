@@ -8,6 +8,7 @@ import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
 import SearchMenu from "../../components/searchmenu/SearchMenu";
+import { PHUKIEN } from "../../public/assets/global-image";
 
 const PhuKien = ({ phuKien }: any) => {
   const [page, setPage] = useState<number>(phuKien.currentPage);
@@ -92,6 +93,19 @@ const PhuKien = ({ phuKien }: any) => {
           name="description"
           content="the crew station là nơi chuyên cung cấp những sản phẩm về phụ kiện máy uy tín và chất lượng."
         />
+        <meta name="keywords" content="phụ kiện" />
+        <meta property="og:title" content="phụ kiện" />
+        <meta
+          property="og:url"
+          content={`https://crewvape.net/san-pham/phu-kien?page=${page}`}
+        />
+        <meta
+          property="og:image:alt"
+          content={`https://crewvape.net/san-pham/phu-kien?page=${page}`}
+        />
+        <meta property="og:image" content={`${PHUKIEN}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] pl-3 py-2 mb-4 bg-white my-4 rounded">
         <div className="flex">

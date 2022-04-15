@@ -89,7 +89,7 @@ const PodMod = ({ podMod }: any) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="the crew station là nơi chuyên cung cấp những sản phẩm về pod system uy tín và chất lượng."
+          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về pod system uy tín và chất lượng."
         />
         <meta name="keywords" content="pod system" />
         <meta property="og:title" content="pod system" />

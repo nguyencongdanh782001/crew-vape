@@ -9,14 +9,14 @@ const Footer = () => {
         {/* lg:gap-x-20 gap-y-5 */}
         <div className="flex-1 lg:mr-10 my-3">
           <h3 className="uppercase tracking-wider text-xl font-semibold leading-8">
-            the crew station
+            Crew Vape
           </h3>
           <div className="w-11 border-[1.5px] border-red-400 bg-red-400 mt-1 mb-4"></div>
           <div>
             <p className="text-base leading-6 tracking-wide font-normal w-3/4 mb-4">
-              The Crew Station là cửa hàng chính hãng cung cấp tinh dầu, thân
-              máy, đầu đốt, phụ kiện vape với sự phục vụ chuyên nghiệp và uy tín
-              hàng đầu Việt Nam.
+              Crew Vape là cửa hàng chính hãng cung cấp tinh dầu, thân máy, đầu
+              đốt, phụ kiện vape với sự phục vụ chuyên nghiệp và uy tín hàng đầu
+              Việt Nam.
             </p>
             <p className="mb-2 text-base leading-6 tracking-wide font-normal flex items-center gap-x-2">
               <MdPhone />
@@ -72,7 +72,7 @@ const Footer = () => {
       </div>
       <div className="bg-black w-full py-4 text-white flex justify-center items-center">
         <p className="text-sm leading-6 tracking-wide font-normal">
-          2022 - 2023 © Bản quyền thuộc The Crew Station
+          2022 - 2023 © Bản quyền thuộc Crew Vape
         </p>
       </div>
     </footer>

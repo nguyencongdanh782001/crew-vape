@@ -37,7 +37,7 @@ const Home: NextPage = ({
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>
-      <div className="pb-10 pt-[58px] lg:pt-[8px] ">
+      <div className="pb-10 pt-[52px] lg:pt-[1px] ">
         <SliderBanner banner={banner} />
         <Category />
         <ListProduct

@@ -58,7 +58,7 @@ const SliderBanner = ({ banner }: any) => {
             <img
               src={item.image}
               alt=""
-              className="w-full object-cover h-[200px]  sm:h-[250px] md:h-[300px] lg:h-[500px]"
+              className="w-screen object-cover h-[200px]  sm:h-[250px] md:h-[300px] lg:h-[500px]"
             />
           </div>
         ))}

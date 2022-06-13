@@ -28,7 +28,7 @@ const Footer = () => {
             </p>
             <p className="mb-2 text-base leading-6 tracking-wide font-normal flex items-center gap-x-2">
               <IoStorefront />
-              Địa chỉ: 82 Công Chúa Ngọc Hân P13 Q11
+              Địa chỉ: 236/1C Thái Phiên P8 Q11
             </p>
           </div>
         </div>

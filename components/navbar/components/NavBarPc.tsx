@@ -91,7 +91,7 @@ const NavBarPc = () => {
             </Link>
           </li>
           <li className="ml-4">
-            <Link href="/khuyen-mai">
+            <Link href="/khuyen-mai?page=1">
               <a className="header-menu-link">sản phẩm khuyến mãi</a>
             </Link>
           </li>

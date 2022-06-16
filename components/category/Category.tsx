@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import category from "../../data/categoryData";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
-const Category = () => {
+const Category = ({ danhMucNoiBat }: any) => {
   useEffect(() => {
     AOS.init({
       // Global settings:
@@ -32,8 +31,12 @@ const Category = () => {
     <section className="w-full flex justify-center mt-10">
       <div className="flex justify-center items-center  flex-wrap max-w-7xl">
         {/* gap-6 */}
-        {category?.map((item, index) => (
-          <Link href={`/san-pham/${item.slug}?page=1`} key={index} passHref>
+        {danhMucNoiBat?.map((item: any, index: any) => (
+          <Link
+            href={`/san-pham/${item?.category?.slug}?page=1`}
+            key={index}
+            passHref
+          >
             <div
               data-aos="fade-up"
               className="relative flex items-center jus cursor-pointer overflow-hidden group rounded-lg m-1 md:m-3"
@@ -42,7 +45,7 @@ const Category = () => {
                 <img
                   loading="lazy"
                   src={`${item?.image}`}
-                  alt={item?.title}
+                  alt={item?.category?.name}
                   className="group-hover:scale-105 h-full w-full rounded-lg object-cover transition-all duration-200 ease-linear"
                 />
               </div>
@@ -51,13 +54,13 @@ const Category = () => {
                   className="uppercase text-center font-semibold text-white text-base md:text-2xl tracking-wider leading-7 md:leading-10"
                   style={{ textShadow: "2px 2px 2px #000" }}
                 >
-                  {item?.title}
+                  {item?.category?.name}
                 </h4>
                 <p
                   className="uppercase text-center font-normal text-white text-xs md:text-base tracking-wider"
                   style={{ textShadow: "1.5px 1.5px 1.5px #000" }}
                 >
-                  danh mục {item?.title}
+                  danh mục {item?.category?.name}
                 </p>
               </div>
               <div className="absolute top-0 right-0 bottom-0 left-0 bg-black opacity-20 group-hover:opacity-60 transition-all duration-200"></div>

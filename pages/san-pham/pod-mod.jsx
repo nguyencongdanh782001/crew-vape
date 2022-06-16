@@ -7,23 +7,46 @@ import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
-import { BOXTANK } from "../../public/assets/global-image";
+import { POD } from "../../public/assets/global-image";
+import parse from "html-react-parser";
+import MarkdownIt from "markdown-it";
+import mila from "markdown-it-link-attributes";
+import markdownItVideo from "markdown-it-video";
+import "react-markdown-editor-lite/lib/index.css";
 
-const BoxTank = ({ boxTank }: any) => {
-  const [page, setPage] = useState<number>(boxTank.currentPage);
-  const [listProductFilter, setListProductFilter] = useState(boxTank.product);
+export const mdParser = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: false,
+  langPrefix: "language-",
+})
+  .use(mila, {
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  })
+  .use(markdownItVideo, {
+    youtube: { width: 640, height: 390 },
+    vimeo: { width: 500, height: 281 },
+    vine: { width: 600, height: 600, embed: "simple" },
+    prezi: { width: 550, height: 400 },
+  });
+
+const PodMod = ({ podMod, category }) => {
+  const [page, setPage] = useState(podMod.CurrentPage);
+  const [listProductFilter, setListProductFilter] = useState(podMod.product);
   const [filter, setFilter] = useState("");
-
   const router = useRouter();
 
   useEffect(() => {
-    setListProductFilter(boxTank.product);
-  }, [boxTank.product]);
+    setListProductFilter(podMod.product);
+  }, [podMod.product]);
 
   const handleChangePage = useCallback(
-    (value: any) => {
+    (value) => {
       setPage(value.selected + 1);
-      router.push(`/san-pham/box-tank?page=${value.selected + 1}`, undefined, {
+      router.push(`/san-pham/pod-mod?page=${value.selected + 1}`, undefined, {
         shallow: false,
       });
     },
@@ -32,35 +55,31 @@ const BoxTank = ({ boxTank }: any) => {
 
   useEffect(() => {
     if (filter === "az") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.name.localeCompare(b.name))
       );
     } else if (filter === "za") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.name.localeCompare(a.name))
       );
     } else if (filter === "increase") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.price - b.price)
       );
     } else if (filter === "decrease") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.price - a.price)
       );
     } else if (filter === "newest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
-          );
+          return new Date(b.createdAt) - new Date(a.createdAt);
         })
       );
     } else if (filter === "oldest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
-          );
+          return new Date(a.createdAt) - new Date(b.createdAt);
         })
       );
     }
@@ -75,7 +94,7 @@ const BoxTank = ({ boxTank }: any) => {
     { value: "oldest", label: "Cũ nhất" },
   ];
 
-  const handleChange = (newValue: any, actionMeta: any) => {
+  const handleChange = (newValue, actionMeta) => {
     setFilter(newValue.value);
   };
 
@@ -86,23 +105,23 @@ const BoxTank = ({ boxTank }: any) => {
   return (
     <LayoutProduct>
       <Head>
-        <title>Box tank</title>
+        <title>Pod system</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về box tank uy tín và chất lượng."
+          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về pod system uy tín và chất lượng."
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="keywords" content="box tank" />
-        <meta property="og:title" content="box tank" />
+        <meta name="keywords" content="pod system" />
+        <meta property="og:title" content="pod system" />
         <meta
           property="og:url"
-          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
+          content={`https://crewvape.net/san-pham/pod-mod?page=${page}`}
         />
         <meta
           property="og:image:alt"
-          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
+          content={`https://crewvape.net/san-pham/pod-mod?page=${page}`}
         />
-        <meta property="og:image" content={`${BOXTANK.src}`} />
+        <meta property="og:image" content={`${POD.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>
@@ -113,7 +132,7 @@ const BoxTank = ({ boxTank }: any) => {
           </Link>
           <p>&nbsp;/&nbsp;</p>
           <p color="text.primary" className="font-semibold">
-            Box tank
+            Pod mod
           </p>
         </div>
       </div>
@@ -123,9 +142,9 @@ const BoxTank = ({ boxTank }: any) => {
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] bg-white pt-2 pb-5 rounded ">
         <div className="flex items-center justify-between mb-7 mt-3 px-4">
           <h1 className="font-medium text-xs sm:text-lg border-l-4 border-red-400 pl-2">
-            Box tank
+            Pod mod
           </h1>
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center">
             {/* gap-x-3 */}
             <label
               id="Select"
@@ -143,38 +162,60 @@ const BoxTank = ({ boxTank }: any) => {
           </div>
         </div>
         <ListProductDetail data={listProductFilter} />
-        {boxTank.product.length < 1 && (
+
+        {podMod.product.length < 1 && (
           <div className="w-full flex justify-center items-center mb-6 ">
             {/* gap-x-2 */}
             <IoSearchOutline className="text-lg mr-2" />
             <p>Không có sản phẩm</p>
           </div>
         )}
-        {boxTank.product.length > 0 && (
-          <div className="w-full flex justify-center items-center mt-6">
-            <Pagination
-              totalPage={boxTank.totalPage}
-              activePage={page}
-              handleChange={handleChangePage}
-            />
-          </div>
+        {podMod.product.length > 0 && (
+          <>
+            <div className="w-full flex justify-center items-center mt-6">
+              <Pagination
+                totalPage={podMod.totalPage}
+                activePage={page}
+                handleChange={handleChangePage}
+              />
+            </div>
+            {category?.blog && (
+              <>
+                <div className="w-full h-[0.5px] bg-gray-300 my-7"></div>
+                <div className="px-5">
+                  <div className="blog-content w-full text-white flex flex-col justify-center items-start px-4 sm:px-3 lg:px-4 leading-7 text-sm sm:text-base">
+                    {parse(mdParser.render(`${category?.blog}`))}
+                  </div>
+                </div>
+              </>
+            )}
+          </>
         )}
       </div>
     </LayoutProduct>
   );
 };
 
-export default BoxTank;
+export default PodMod;
 
-export async function getServerSideProps(context: any) {
-  const resBoxTank = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=box-tank`
+export async function getServerSideProps(context) {
+  const responses = await Promise.all([
+    fetch(
+      `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=pod-mod`
+    ),
+    fetch(
+      `https://vape-store.herokuapp.com/api/category/slug-category?cat=pod-mod`
+    ),
+  ]);
+
+  const jsons = await Promise.all(
+    await Promise.all(responses.map((res) => res.json()))
   );
-  const boxTank = await resBoxTank.json();
 
   return {
     props: {
-      boxTank,
+      podMod: jsons[0],
+      category: jsons[1],
     }, // will be passed to the page component as props
   };
 }

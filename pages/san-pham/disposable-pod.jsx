@@ -8,9 +8,33 @@ import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
 import { POD1LAN } from "../../public/assets/global-image";
+import parse from "html-react-parser";
+import MarkdownIt from "markdown-it";
+import mila from "markdown-it-link-attributes";
+import markdownItVideo from "markdown-it-video";
+import "react-markdown-editor-lite/lib/index.css";
 
-const DisposablePod = ({ disposablePod }: any) => {
-  const [page, setPage] = useState<number>(disposablePod.currentPage);
+export const mdParser = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: false,
+  langPrefix: "language-",
+})
+  .use(mila, {
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  })
+  .use(markdownItVideo, {
+    youtube: { width: 640, height: 390 },
+    vimeo: { width: 500, height: 281 },
+    vine: { width: 600, height: 600, embed: "simple" },
+    prezi: { width: 550, height: 400 },
+  });
+
+const DisposablePod = ({ disposablePod, category }) => {
+  const [page, setPage] = useState(disposablePod.currentPage);
   const [listProductFilter, setListProductFilter] = useState(
     disposablePod.product
   );
@@ -22,7 +46,7 @@ const DisposablePod = ({ disposablePod }: any) => {
   }, [disposablePod.product]);
 
   const handleChangePage = useCallback(
-    (value: any) => {
+    (value) => {
       setPage(value.selected + 1);
       router.push(
         `/san-pham/disposable-pod?page=${value.selected + 1}`,
@@ -37,35 +61,31 @@ const DisposablePod = ({ disposablePod }: any) => {
 
   useEffect(() => {
     if (filter === "az") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.name.localeCompare(b.name))
       );
     } else if (filter === "za") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.name.localeCompare(a.name))
       );
     } else if (filter === "increase") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.price - b.price)
       );
     } else if (filter === "decrease") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.price - a.price)
       );
     } else if (filter === "newest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
-          );
+          return new Date(b.createdAt) - new Date(a.createdAt);
         })
       );
     } else if (filter === "oldest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
-          );
+          return new Date(a.createdAt) - new Date(b.createdAt);
         })
       );
     }
@@ -80,7 +100,7 @@ const DisposablePod = ({ disposablePod }: any) => {
     { value: "oldest", label: "Cũ nhất" },
   ];
 
-  const handleChange = (newValue: any, actionMeta: any) => {
+  const handleChange = (newValue, actionMeta) => {
     setFilter(newValue.value);
   };
 
@@ -156,13 +176,25 @@ const DisposablePod = ({ disposablePod }: any) => {
           </div>
         )}
         {disposablePod.product.length > 0 && (
-          <div className="w-full flex justify-center items-center mt-6">
-            <Pagination
-              totalPage={disposablePod.totalPage}
-              activePage={page}
-              handleChange={handleChangePage}
-            />
-          </div>
+          <>
+            <div className="w-full flex justify-center items-center mt-6">
+              <Pagination
+                totalPage={disposablePod.totalPage}
+                activePage={page}
+                handleChange={handleChangePage}
+              />
+            </div>
+            {category?.blog && (
+              <>
+                <div className="w-full h-[0.5px] bg-gray-300 my-7"></div>
+                <div className="px-5">
+                  <div className="blog-content w-full text-white flex flex-col justify-center items-start px-4 sm:px-3 lg:px-4 leading-7 text-sm sm:text-base">
+                    {parse(mdParser.render(`${category?.blog}`))}
+                  </div>
+                </div>
+              </>
+            )}
+          </>
         )}
       </div>
     </LayoutProduct>
@@ -171,15 +203,24 @@ const DisposablePod = ({ disposablePod }: any) => {
 
 export default DisposablePod;
 
-export async function getServerSideProps(context: any) {
-  const resDisposablePod = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=disposable-pod`
+export async function getServerSideProps(context) {
+  const responses = await Promise.all([
+    fetch(
+      `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=disposable-pod`
+    ),
+    fetch(
+      `https://vape-store.herokuapp.com/api/category/slug-category?cat=disposable-pod`
+    ),
+  ]);
+
+  const jsons = await Promise.all(
+    await Promise.all(responses.map((res) => res.json()))
   );
-  const disposablePod = await resDisposablePod.json();
 
   return {
     props: {
-      disposablePod,
+      disposablePod: jsons[0],
+      category: jsons[1],
     }, // will be passed to the page component as props
   };
 }

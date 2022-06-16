@@ -7,22 +7,47 @@ import Select from "react-select";
 import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
-import { SALTNIC } from "../../public/assets/global-image";
+import { BOXTANK } from "../../public/assets/global-image";
+import parse from "html-react-parser";
+import MarkdownIt from "markdown-it";
+import mila from "markdown-it-link-attributes";
+import markdownItVideo from "markdown-it-video";
+import "react-markdown-editor-lite/lib/index.css";
 
-const Saltnic = ({ saltnic }: any) => {
-  const [page, setPage] = useState<number>(saltnic.currentPage);
-  const [listProductFilter, setListProductFilter] = useState(saltnic.product);
+export const mdParser = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: false,
+  langPrefix: "language-",
+})
+  .use(mila, {
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  })
+  .use(markdownItVideo, {
+    youtube: { width: 640, height: 390 },
+    vimeo: { width: 500, height: 281 },
+    vine: { width: 600, height: 600, embed: "simple" },
+    prezi: { width: 550, height: 400 },
+  });
+
+const BoxTank = ({ boxTank, category }) => {
+  const [page, setPage] = useState(boxTank.currentPage);
+  const [listProductFilter, setListProductFilter] = useState(boxTank.product);
   const [filter, setFilter] = useState("");
+
   const router = useRouter();
 
   useEffect(() => {
-    setListProductFilter(saltnic.product);
-  }, [saltnic.product]);
+    setListProductFilter(boxTank.product);
+  }, [boxTank.product]);
 
   const handleChangePage = useCallback(
-    (value: any) => {
+    (value) => {
       setPage(value.selected + 1);
-      router.push(`/san-pham/saltnic?page=${value.selected + 1}`, undefined, {
+      router.push(`/san-pham/box-tank?page=${value.selected + 1}`, undefined, {
         shallow: false,
       });
     },
@@ -31,35 +56,31 @@ const Saltnic = ({ saltnic }: any) => {
 
   useEffect(() => {
     if (filter === "az") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.name.localeCompare(b.name))
       );
     } else if (filter === "za") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.name.localeCompare(a.name))
       );
     } else if (filter === "increase") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => a.price - b.price)
       );
     } else if (filter === "decrease") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => b.price - a.price)
       );
     } else if (filter === "newest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
-          );
+          return new Date(b.createdAt) - new Date(a.createdAt);
         })
       );
     } else if (filter === "oldest") {
-      setListProductFilter((prev: any) =>
+      setListProductFilter((prev) =>
         [...prev].sort((a, b) => {
-          return (
-            (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
-          );
+          return new Date(a.createdAt) - new Date(b.createdAt);
         })
       );
     }
@@ -74,7 +95,7 @@ const Saltnic = ({ saltnic }: any) => {
     { value: "oldest", label: "Cũ nhất" },
   ];
 
-  const handleChange = (newValue: any, actionMeta: any) => {
+  const handleChange = (newValue, actionMeta) => {
     setFilter(newValue.value);
   };
 
@@ -85,23 +106,23 @@ const Saltnic = ({ saltnic }: any) => {
   return (
     <LayoutProduct>
       <Head>
-        <title>Tinh dầu saltnic</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>Box tank</title>
         <meta
           name="description"
-          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về tinh dầu saltnic uy tín và chất lượng."
+          content="Crew Vape là nơi chuyên cung cấp những sản phẩm về box tank uy tín và chất lượng."
         />
-        <meta name="keywords" content="tinh dầu saltnic" />
-        <meta property="og:title" content="tinh dầu saltnic" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="keywords" content="box tank" />
+        <meta property="og:title" content="box tank" />
         <meta
           property="og:url"
-          content={`https://crewvape.net/san-pham/saltnic?page=${page}`}
+          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
         />
         <meta
           property="og:image:alt"
-          content={`https://crewvape.net/san-pham/saltnic?page=${page}`}
+          content={`https://crewvape.net/san-pham/box-tank?page=${page}`}
         />
-        <meta property="og:image" content={`${SALTNIC.src}`} />
+        <meta property="og:image" content={`${BOXTANK.src}`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="600" />
       </Head>
@@ -112,7 +133,7 @@ const Saltnic = ({ saltnic }: any) => {
           </Link>
           <p>&nbsp;/&nbsp;</p>
           <p color="text.primary" className="font-semibold">
-            Tinh dầu saltnic
+            Box tank
           </p>
         </div>
       </div>
@@ -122,9 +143,9 @@ const Saltnic = ({ saltnic }: any) => {
       <div className="lg:mx-[49px] xl:ml-[25px] xl:mr-[120px] bg-white pt-2 pb-5 rounded ">
         <div className="flex items-center justify-between mb-7 mt-3 px-4">
           <h1 className="font-medium text-xs sm:text-lg border-l-4 border-red-400 pl-2">
-            Tinh dầu saltnic
+            Box tank
           </h1>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center ">
             {/* gap-x-3 */}
             <label
               id="Select"
@@ -142,39 +163,58 @@ const Saltnic = ({ saltnic }: any) => {
           </div>
         </div>
         <ListProductDetail data={listProductFilter} />
-
-        {saltnic.product.length < 1 && (
+        {boxTank.product.length < 1 && (
           <div className="w-full flex justify-center items-center mb-6 ">
             {/* gap-x-2 */}
             <IoSearchOutline className="text-lg mr-2" />
             <p>Không có sản phẩm</p>
           </div>
         )}
-        {saltnic.product.length > 0 && (
-          <div className="w-full flex justify-center items-center mt-6">
-            <Pagination
-              totalPage={saltnic.totalPage}
-              activePage={page}
-              handleChange={handleChangePage}
-            />
-          </div>
+        {boxTank.product.length > 0 && (
+          <>
+            <div className="w-full flex justify-center items-center mt-6">
+              <Pagination
+                totalPage={boxTank.totalPage}
+                activePage={page}
+                handleChange={handleChangePage}
+              />
+            </div>
+            {category?.blog && (
+              <>
+                <div className="w-full h-[0.5px] bg-gray-300 my-7"></div>
+                <div className="px-5">
+                  <div className="blog-content w-full text-white flex flex-col justify-center items-start px-4 sm:px-3 lg:px-4 leading-7 text-sm sm:text-base">
+                    {parse(mdParser.render(`${category?.blog}`))}
+                  </div>
+                </div>
+              </>
+            )}
+          </>
         )}
       </div>
     </LayoutProduct>
   );
 };
 
-export default Saltnic;
+export default BoxTank;
 
-export async function getServerSideProps(context: any) {
-  const resSaltnic = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=saltnic`
+export async function getServerSideProps(context) {
+  const responses = await Promise.all([
+    fetch(
+      `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=box-tank`
+    ),
+    fetch(
+      `https://vape-store.herokuapp.com/api/category/slug-category?cat=box-tank`
+    ),
+  ]);
+
+  const jsons = await Promise.all(
+    await Promise.all(responses.map((res) => res.json()))
   );
-  const saltnic = await resSaltnic.json();
-
   return {
     props: {
-      saltnic,
+      boxTank: jsons[0],
+      category: jsons[1],
     }, // will be passed to the page component as props
   };
 }

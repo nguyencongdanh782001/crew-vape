@@ -8,9 +8,33 @@ import LayoutProduct from "../../components/layout/LayoutProduct";
 import ListProductDetail from "../../components/ListproductDetail/ListProductDetail";
 import Pagination from "../../components/pagination/Pagination";
 import { FREEBASE } from "../../public/assets/global-image";
+import parse from "html-react-parser";
+import MarkdownIt from "markdown-it";
+import mila from "markdown-it-link-attributes";
+import markdownItVideo from "markdown-it-video";
+import "react-markdown-editor-lite/lib/index.css";
 
-const FreeBase = ({ freebase }: any) => {
-  const [page, setPage] = useState<number>(freebase.currentPage);
+export const mdParser = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: false,
+  langPrefix: "language-",
+})
+  .use(mila, {
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  })
+  .use(markdownItVideo, {
+    youtube: { width: 640, height: 390 },
+    vimeo: { width: 500, height: 281 },
+    vine: { width: 600, height: 600, embed: "simple" },
+    prezi: { width: 550, height: 400 },
+  });
+
+const FreeBase = ({ freebase, category }) => {
+  const [page, setPage] = useState(freebase.currentPage);
   const [listProductFilter, setListProductFilter] = useState(freebase.product);
   const [filter, setFilter] = useState("");
   const router = useRouter();
@@ -20,7 +44,7 @@ const FreeBase = ({ freebase }: any) => {
   }, [freebase.product]);
 
   const handleChangePage = useCallback(
-    (value: any) => {
+    (value) => {
       setPage(value.selected + 1);
       router.push(`/san-pham/freebase?page=${value.selected + 1}`, undefined, {
         shallow: false,
@@ -32,35 +56,31 @@ const FreeBase = ({ freebase }: any) => {
   useEffect(() => {
     if (listProductFilter !== []) {
       if (filter === "az") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => a.name.localeCompare(b.name))
         );
       } else if (filter === "za") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => b.name.localeCompare(a.name))
         );
       } else if (filter === "increase") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => a.price - b.price)
         );
       } else if (filter === "decrease") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => b.price - a.price)
         );
       } else if (filter === "newest") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => {
-            return (
-              (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any)
-            );
+            return new Date(b.createdAt) - new Date(a.createdAt);
           })
         );
       } else if (filter === "oldest") {
-        setListProductFilter((prev: any) =>
+        setListProductFilter((prev) =>
           [...prev].sort((a, b) => {
-            return (
-              (new Date(a.createdAt) as any) - (new Date(b.createdAt) as any)
-            );
+            return new Date(a.createdAt) - new Date(b.createdAt);
           })
         );
       }
@@ -76,7 +96,7 @@ const FreeBase = ({ freebase }: any) => {
     { value: "oldest", label: "Cũ nhất" },
   ];
 
-  const handleChange = (newValue: any, actionMeta: any) => {
+  const handleChange = (newValue, actionMeta) => {
     setFilter(newValue.value);
   };
 
@@ -153,13 +173,25 @@ const FreeBase = ({ freebase }: any) => {
           </div>
         )}
         {freebase.product.length > 0 && (
-          <div className="w-full flex justify-center items-center mt-6">
-            <Pagination
-              totalPage={freebase.totalPage}
-              activePage={page}
-              handleChange={handleChangePage}
-            />
-          </div>
+          <>
+            <div className="w-full flex justify-center items-center mt-6">
+              <Pagination
+                totalPage={freebase.totalPage}
+                activePage={page}
+                handleChange={handleChangePage}
+              />
+            </div>
+            {category?.blog && (
+              <>
+                <div className="w-full h-[0.5px] bg-gray-300 my-7"></div>
+                <div className="px-5">
+                  <div className="blog-content w-full text-white flex flex-col justify-center items-start px-4 sm:px-3 lg:px-4 leading-7 text-sm sm:text-base">
+                    {parse(mdParser.render(`${category?.blog}`))}
+                  </div>
+                </div>
+              </>
+            )}
+          </>
         )}
       </div>
     </LayoutProduct>
@@ -168,15 +200,24 @@ const FreeBase = ({ freebase }: any) => {
 
 export default FreeBase;
 
-export async function getServerSideProps(context: any) {
-  const resFreebase = await fetch(
-    `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=freebase`
+export async function getServerSideProps(context) {
+  const responses = await Promise.all([
+    fetch(
+      `https://vape-store.herokuapp.com/api/product?page=${context.query.page}&&limit=12&&cat=freebase`
+    ),
+    fetch(
+      `https://vape-store.herokuapp.com/api/category/slug-category?cat=freebase`
+    ),
+  ]);
+
+  const jsons = await Promise.all(
+    await Promise.all(responses.map((res) => res.json()))
   );
-  const freebase = await resFreebase.json();
 
   return {
     props: {
-      freebase,
+      freebase: jsons[0],
+      category: jsons[1],
     }, // will be passed to the page component as props
   };
 }

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/san-pham/box-tank.jsx", "pages/san-pham/saltnic.jsx", "pages/san-pham/pod-mod.jsx", "pages/san-pham/phu-kien.jsx", "pages/san-pham/freebase.jsx", "pages/san-pham/disposable-pod.jsx", "pages/san-pham/box-tank.jsx"],
   "exclude": ["node_modules"]
 }

@@ -15,6 +15,7 @@ const Home: NextPage = ({
   podMod,
   boxTank,
   phuKien,
+  danhMucNoiBat,
 }: any) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,7 +40,7 @@ const Home: NextPage = ({
       </Head>
       <div className="pb-10 pt-[52px] lg:pt-[1px] ">
         <SliderBanner banner={banner} />
-        <Category />
+        <Category danhMucNoiBat={danhMucNoiBat} />
         <ListProduct
           heading="freebase"
           data={freebase.product}
@@ -94,6 +95,9 @@ export async function getStaticProps(context: any) {
     fetch(
       "https://vape-store.herokuapp.com/api/product?page=1&&limit=4&&cat=phu-kien"
     ),
+    fetch(
+      "https://vape-store.herokuapp.com/api/feature-category/get-all-feature-category"
+    ),
   ]);
 
   const jsons = await Promise.all(
@@ -109,6 +113,7 @@ export async function getStaticProps(context: any) {
       podMod: jsons[4],
       boxTank: jsons[5],
       phuKien: jsons[6],
+      danhMucNoiBat: jsons[7],
     },
     revalidate: 60,
   };

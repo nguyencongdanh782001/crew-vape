@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -6,6 +6,7 @@ import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import { useMediaQuery } from "react-responsive";
 const SampleNextArrow = (props: any) => {
   const { onClick } = props;
   return (
@@ -38,7 +39,14 @@ const SamplePrevArrow = (props: any) => {
   );
 };
 
-const SliderBanner = ({ banner }: any) => {
+const SliderBanner = ({ banner, bannerMobile }: any) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const moblie = useMediaQuery({ maxWidth: "460px" });
+  useEffect(() => {
+    setIsMobile(moblie);
+  }, [moblie]);
+
   const settings = {
     infinite: true,
     slidesToShow: 1,
@@ -53,15 +61,25 @@ const SliderBanner = ({ banner }: any) => {
   return (
     <section className="w-full relative">
       <Slider {...settings}>
-        {banner.map((item: any, index: any) => (
-          <div className="w-screen" key={index}>
-            <img
-              src={item.image}
-              alt=""
-              className="w-screen object-cover h-[200px]  sm:h-[250px] md:h-[300px] lg:h-[500px]"
-            />
-          </div>
-        ))}
+        {isMobile
+          ? bannerMobile.map((item: any, index: any) => (
+              <div className="w-screen" key={index}>
+                <img
+                  src={item.image}
+                  alt=""
+                  className="w-screen object-cover h-[200px]  sm:h-[250px] md:h-[300px] lg:h-[500px]"
+                />
+              </div>
+            ))
+          : banner.map((item: any, index: any) => (
+              <div className="w-screen" key={index}>
+                <img
+                  src={item.image}
+                  alt=""
+                  className="w-screen object-cover h-[200px]  sm:h-[250px] md:h-[300px] lg:h-[500px]"
+                />
+              </div>
+            ))}
       </Slider>
     </section>
   );

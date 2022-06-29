@@ -9,6 +9,7 @@ import { TEXT_LOGO_CREW } from "../public/assets/global-image";
 
 const Home: NextPage = ({
   banner,
+  bannerMobile,
   freebase,
   Saltnic,
   disposablePod,
@@ -39,7 +40,7 @@ const Home: NextPage = ({
         <meta property="og:image:height" content="600" />
       </Head>
       <div className="pb-10 pt-[52px] lg:pt-[1px] ">
-        <SliderBanner banner={banner} />
+        <SliderBanner banner={banner} bannerMobile={bannerMobile} />
         <Category danhMucNoiBat={danhMucNoiBat} />
         <ListProduct
           heading="freebase"
@@ -98,6 +99,12 @@ export async function getStaticProps(context: any) {
     fetch(
       "https://vape-store.herokuapp.com/api/feature-category/get-all-feature-category"
     ),
+    fetch(
+      "https://vape-store.herokuapp.com/api/banner-mobile/all-banner-mobile",
+      {
+        method: "GET",
+      }
+    ),
   ]);
 
   const jsons = await Promise.all(
@@ -114,6 +121,7 @@ export async function getStaticProps(context: any) {
       boxTank: jsons[5],
       phuKien: jsons[6],
       danhMucNoiBat: jsons[7],
+      bannerMobile: jsons[8],
     },
     revalidate: 60,
   };
